@@ -4,6 +4,7 @@ import '../../utils/app_constant.dart';
 
 class CustomElevatedBtn extends StatelessWidget {
   final VoidCallback? onPressed;
+  final Color? textColor;
   final String? fontFamily;
   final Color? backgroundColor;
   final Color? foregroundColor;
@@ -18,6 +19,7 @@ class CustomElevatedBtn extends StatelessWidget {
     this.side,
     required this.width,
     required this.height,
+    this.textColor,
     this.onPressed,
     this.fontFamily,
     this.backgroundColor,
@@ -45,7 +47,8 @@ class CustomElevatedBtn extends StatelessWidget {
       child: child ??
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
+              color: textColor,
               fontSize: 15,
               fontWeight: FontWeight.w600,
             ),

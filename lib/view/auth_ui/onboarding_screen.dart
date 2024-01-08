@@ -28,11 +28,9 @@ class OnboardingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Lottie.asset('asset/json/onboarding_screen.json',
-                      animate: true,
-                      fit: BoxFit.cover,
-                      repeat: true),
+                Container(
+                  child: Lottie.asset('asset/json/astronaut-with-space-shuttle.json',
+                      animate: true, repeat: true),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -44,11 +42,11 @@ class OnboardingScreen extends StatelessWidget {
                         SizedBox(
                           width: 343.w,
                           child: Text(
-                            'Discover Your Dream Game deals here',
+                            'GET YOUR OWN GAMES HERE',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: const Color(0xFFFFD771),
-                              fontSize: 32.sp,
+                              color: const Color(0xFFFF0000),
+                              fontSize: 30.sp,
                               fontFamily: 'Roboto-Bold',
                             ),
                           ),
@@ -59,13 +57,13 @@ class OnboardingScreen extends StatelessWidget {
                         SizedBox(
                           width: 323.w,
                           child: Text(
-                            'Explore all the latest games',
+                            'Immerse yourself in a dynamic virtual marketplace in a gamified environment. ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 12.sp,
                               fontFamily: 'Roboto-Regular',
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
                         ),
@@ -73,14 +71,28 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height:200,child:Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [
-                  CustomElevatedBtn(width: 160, height: 60,backgroundColor: AppConstant.appBtnColor,title: "Login",onPressed: () {
-
-                  },),
-                  CustomElevatedBtn(width: 160, height: 60,backgroundColor: AppConstant.appBtnColor,title: "Register",onPressed: () {
-
-                  },)
-                ]),)
+                  height: 200,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomElevatedBtn(
+                          width: 160,
+                          height: 60,
+                          backgroundColor: AppConstant.appBtnColor,
+                          title: "Login",
+                          onPressed: () {},
+                          textColor: Colors.white,
+                        ),
+                        CustomElevatedBtn(
+                          width: 160,
+                          height: 60,
+                          backgroundColor: AppConstant.appBtnColor,
+                          title: "Register",
+                          onPressed: () {},
+                          textColor: Colors.white,
+                        ),
+                      ]),
+                )
               ],
             )),
       ),
