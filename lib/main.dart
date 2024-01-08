@@ -1,7 +1,8 @@
+import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
+import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -18,12 +19,12 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return const ScreenUtilInit(
-      designSize: Size(414, 896),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      child: GetMaterialApp(
-        home: SplashScreen(),
-      ),
-    );
+        designSize: Size(360, 800),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: OnboardingScreen(),
+        ));
   }
 }
