@@ -42,7 +42,7 @@ class OnboardingScreen extends StatelessWidget {
                         SizedBox(
                           width: 343.w,
                           child: Text(
-                            'GET YOUR OWN GAMES HERE',
+                            'GAME ON AT GAME STOP',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: const Color(0xFFFF0000),
@@ -57,7 +57,7 @@ class OnboardingScreen extends StatelessWidget {
                         SizedBox(
                           width: 323.w,
                           child: Text(
-                            'Immerse yourself in a dynamic virtual marketplace in a gamified environment. ',
+                            'Immerse yourself in a dynamic virtual marketplace.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
