@@ -29,7 +29,7 @@ class OnboardingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  child: Lottie.asset('asset/json/astronaut-with-space-shuttle.json',
+                  child: Lottie.asset('asset/json/astroboymain.json',
                       animate: true, repeat: true),
                 ),
                 Container(
