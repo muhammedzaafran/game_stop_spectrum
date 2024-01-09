@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
+import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 
@@ -68,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     alignment: Alignment.center,
                     child: SizedBox(
                       width: 357,
-                      height: 369,
+                      height: 420,
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -76,18 +77,26 @@ class _SignUpPageState extends State<SignUpPage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               CustomTextField(
-                                  prefixIcon: Icon(Icons.email),
+                                  validateInput: (value) =>
+                                      Validator.validateName(
+                                        name: value,
+                                      ),
+                                  prefixIcon: Icon(Icons.account_circle),
                                   controller: _emailTextController,
-                                  hintText: "Email",
+                                  hintText: "Name",
                                   contentPadding: EdgeInsets.symmetric(
                                       vertical: 25.0, horizontal: 16.0)),
                               const SizedBox(
                                 height: 15,
                               ),
                               CustomTextField(
-                                prefixIcon: Icon(Icons.lock),
+                                validateInput: (value) =>
+                                    Validator.validateEmail(
+                                  email: value,
+                                ),
+                                prefixIcon: Icon(Icons.email),
                                 controller: _passwordTextController,
-                                hintText: "Password",
+                                hintText: "Email",
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
                               ),
@@ -95,21 +104,27 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: 15,
                               ),
                               CustomTextField(
+                                validateInput: (value) =>
+                                    Validator.validatePassword(
+                                  password: value,
+                                ),
+                                prefixIcon: Icon(Icons.lock),
                                 controller: _passwordTextController,
-                                hintText: "    Confirm password",
+                                hintText: "password",
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
                               ),
                               SizedBox(
                                 height: 15,
                               ),
-
                               CustomElevatedBtn(
                                 height: 60,
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign Up",
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {}
+                                },
                                 textColor: Colors.white,
                                 width: 357,
                               ),

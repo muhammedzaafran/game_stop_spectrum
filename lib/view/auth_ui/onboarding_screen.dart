@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/auth_ui/sign_in_screen.dart';
+import 'package:game_stop_spectrum/view/auth_ui/sign_up_screen.dart';
 import 'package:game_stop_spectrum/view/widget/custom_buttons.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -85,7 +87,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           height: 60,
                           backgroundColor: AppConstant.appBtnColor,
                           title: "Login",
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.off(() => const SignInPage(),
+                                transition: Transition.leftToRightWithFade);
+                          },
                           textColor: Colors.white,
                         ),
                         CustomElevatedBtn(
@@ -94,7 +99,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           backgroundColor: AppConstant.appBtnColor,
                           foregroundColor: AppConstant.appMainColor,
                           title: "Register",
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const SignUpPage(),
+                                transition: Transition.leftToRightWithFade);
+                          },
                           textColor: Colors.white,
                         ),
                       ]),

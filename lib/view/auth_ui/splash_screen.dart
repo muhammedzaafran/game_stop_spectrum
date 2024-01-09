@@ -1,12 +1,30 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:game_stop_spectrum/utils/app_constant.dart';
+import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(const Duration(seconds: 4), () {
+      Get.off(() => const OnboardingScreen(),
+          transition: Transition.leftToRightWithFade);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

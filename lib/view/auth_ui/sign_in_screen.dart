@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
+import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 
@@ -76,19 +77,27 @@ class _SignInPageState extends State<SignInPage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               CustomTextField(
-                              prefixIcon: Icon(Icons.email),
+                                  validateInput: (value) =>
+                                      Validator.validateEmail(
+                                        email: value,
+                                      ),
+                                  prefixIcon: const Icon(Icons.email),
                                   controller: _emailTextController,
                                   hintText: "Email",
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       vertical: 25.0, horizontal: 16.0)),
                               const SizedBox(
                                 height: 15,
                               ),
                               CustomTextField(
-                                prefixIcon: Icon(Icons.lock),
+                                validateInput: (value) =>
+                                    Validator.validatePassword(
+                                  password: value,
+                                ),
+                                prefixIcon: const Icon(Icons.lock),
                                 controller: _passwordTextController,
                                 hintText: "Password",
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
                               ),
                               CustomTextBtn(
@@ -102,7 +111,9 @@ class _SignInPageState extends State<SignInPage> {
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign In",
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {}
+                                },
                                 textColor: Colors.white,
                                 width: 357,
                               ),

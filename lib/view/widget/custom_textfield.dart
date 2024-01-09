@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:game_stop_spectrum/utils/app_constant.dart';
 
 class CustomTextField extends StatelessWidget {
+  final String? Function(String?)? validateInput; // Updated type here
   final String? hintText;
   final Widget? prefixIcon;
   final EdgeInsetsGeometry? contentPadding;
@@ -11,6 +12,7 @@ class CustomTextField extends StatelessWidget {
     Key? key,
     this.contentPadding = const EdgeInsets.fromLTRB(13, 14, 13, 14),
     this.controller,
+    this.validateInput,
     this.obscureText = false,
     this.hintText, this. prefixIcon,
   }) : super(key: key);
@@ -18,6 +20,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validateInput,
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
