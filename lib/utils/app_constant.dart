@@ -9,4 +9,5 @@ class AppConstant {
   static const transparent =Colors.transparent;
   static const appTextColor = Color(0xFFFBF5F4);
   static const appBtnColor=Color(0xFFFF0000);
+  static const greyColor=Color(0xFF494949);
 }

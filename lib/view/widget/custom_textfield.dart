@@ -3,6 +3,7 @@ import 'package:game_stop_spectrum/utils/app_constant.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? hintText;
+  final Widget? prefixIcon;
   final EdgeInsetsGeometry? contentPadding;
   final bool obscureText;
   final TextEditingController? controller;
@@ -11,7 +12,7 @@ class CustomTextField extends StatelessWidget {
     this.contentPadding = const EdgeInsets.fromLTRB(13, 14, 13, 14),
     this.controller,
     this.obscureText = false,
-    this.hintText,
+    this.hintText, this. prefixIcon,
   }) : super(key: key);
 
   @override
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
+        prefixIcon:prefixIcon,
         hintStyle: const TextStyle(
           color: Color(0xFF616161),
           fontSize: 13,
