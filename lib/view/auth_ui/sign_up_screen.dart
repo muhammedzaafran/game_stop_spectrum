@@ -81,10 +81,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                       Validator.validateName(
                                         name: value,
                                       ),
-                                  prefixIcon: Icon(Icons.account_circle),
+                                  prefixIcon: const Icon(Icons.account_circle),
                                   controller: _emailTextController,
                                   hintText: "Name",
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       vertical: 25.0, horizontal: 16.0)),
                               const SizedBox(
                                 height: 15,
@@ -94,13 +94,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Validator.validateEmail(
                                   email: value,
                                 ),
-                                prefixIcon: Icon(Icons.email),
+                                prefixIcon: const Icon(Icons.email),
                                 controller: _passwordTextController,
                                 hintText: "Email",
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               CustomTextField(
@@ -108,13 +108,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Validator.validatePassword(
                                   password: value,
                                 ),
-                                prefixIcon: Icon(Icons.lock),
+                                prefixIcon: const Icon(Icons.lock),
                                 controller: _passwordTextController,
                                 hintText: "password",
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               CustomElevatedBtn(
@@ -136,7 +136,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   height: 10,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                             ]),
@@ -158,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               fontFamily: 'Roboto-Bold',
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -169,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 image: "asset/images/google_icon.svg",
                                 onTap: () {},
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               SocialBtn(

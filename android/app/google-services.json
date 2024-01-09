@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "113252686406",
+    "project_id": "game-stop-spectrum",
+    "storage_bucket": "game-stop-spectrum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113252686406:android:ebc90f12694439759c0847",
+        "android_client_info": {
+          "package_name": "com.game_stop_spectrum_softtech_solutions.game_stop_spectrum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfgGlQDD5J1YG_chKGrhQoidbItcUrwsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
