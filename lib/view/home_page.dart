@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: AppConstant.transparent,
           elevation: 0,
         ),
+        body: Column(children: [Center(child: Text("data"))]),
       ),
     );
   }

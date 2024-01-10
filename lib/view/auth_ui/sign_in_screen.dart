@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
+import '../../controller/google_sign_in_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
@@ -20,6 +21,8 @@ class _SignInPageState extends State<SignInPage> {
   final _emailTextController = TextEditingController();
 
   final _passwordTextController = TextEditingController();
+  final GoogleSignInController _googleSignInController =
+  Get.put(GoogleSignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +128,7 @@ class _SignInPageState extends State<SignInPage> {
                                   height: 10,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                             ]),
@@ -147,7 +150,7 @@ class _SignInPageState extends State<SignInPage> {
                               fontFamily: 'Roboto-Bold',
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -156,9 +159,11 @@ class _SignInPageState extends State<SignInPage> {
                             children: [
                               SocialBtn(
                                 image: "asset/images/google_icon.svg",
-                                onTap: () {},
+                                onTap: () {
+                                  _googleSignInController.signUpWithGoogle();
+                                },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               SocialBtn(
