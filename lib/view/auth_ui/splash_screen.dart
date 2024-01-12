@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:game_stop_spectrum/utils/app_constant.dart';
 import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
+import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -16,14 +18,23 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 4), () {
-      Get.off(() => const OnboardingScreen(),
-          transition: Transition.leftToRightWithFade);
+      logInCheck(context);
     });
+  }
+  Future<void> logInCheck(BuildContext context) async {
+    if (user != null) {
+      Get.offAll(() => const HomePage(),
+          transition: Transition.fade, duration: const Duration(seconds: 2));
+    } else {
+      Get.to(() => const OnboardingScreen(),
+          transition: Transition.fade);
+    }
   }
 
   @override

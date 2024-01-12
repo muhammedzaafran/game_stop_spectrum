@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:game_stop_spectrum/view/widget/custom_buttons.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../controller/google_sign_in_controller.dart';
 import '../utils/app_constant.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GoogleSignInController _googleSignInController =
+  Get.put(GoogleSignInController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,7 +26,25 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: AppConstant.transparent,
           elevation: 0,
         ),
-        body: const Column(children: [Center(child: Text("data"))]),
+        body: Container(
+          alignment: Alignment.center,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomElevatedBtn(
+                  height: 60,
+                  backgroundColor: AppConstant.appBtnColor,
+                  foregroundColor: AppConstant.appMainColor,
+                  title: "Sign Out",
+                  onPressed: () {
+                    _googleSignInController.signOutGoogle();
+                  },
+                  textColor: Colors.white,
+                  width: 357,
+                ),
+              ]),
+        ),
       ),
     );
   }
