@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
+import '../../controller/email_sign_in_controller.dart';
 import '../../controller/google_sign_in_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
+import 'email_validation.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,8 +23,11 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailTextController = TextEditingController();
 
   final _passwordTextController = TextEditingController();
+  final _nameTextController = TextEditingController();
   final GoogleSignInController _googleSignInController =
       Get.put(GoogleSignInController());
+  final EmailPassController _emailPassController =
+      Get.put(EmailPassController());
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         name: value,
                                       ),
                                   prefixIcon: const Icon(Icons.account_circle),
-                                  controller: _emailTextController,
+                                  controller: _nameTextController,
                                   hintText: "Name",
                                   contentPadding: const EdgeInsets.symmetric(
                                       vertical: 25.0, horizontal: 16.0)),
@@ -125,8 +130,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign Up",
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {}
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                   await _emailPassController.signupUser(
+                                        _emailTextController.text,
+                                        _passwordTextController.text,
+                                        _nameTextController.text);
+                                  await _emailPassController.checkCurrentUser();
+
+                                  }
                                 },
                                 textColor: Colors.white,
                                 width: 357,

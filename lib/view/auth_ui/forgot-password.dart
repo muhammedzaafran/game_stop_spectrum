@@ -43,7 +43,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     animate: true,
                     fit: BoxFit.cover,
                     repeat: true),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 Form(
                     key: _formKey,
                     child: Column(
