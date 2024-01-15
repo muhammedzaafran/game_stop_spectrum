@@ -20,7 +20,6 @@ class EmailValidationScreen extends StatefulWidget {
 class _EmailValidationScreenState extends State<EmailValidationScreen> {
   final EmailValidationController emailValidationController =
       Get.put(EmailValidationController());
-  bool _isSendingVerification = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,17 +50,17 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Name :  ${widget.user.displayName}",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: const TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Email : ${widget.user.email}",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: const TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       )
                     ]),
@@ -88,47 +87,46 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                           backgroundColor: AppConstant.appBtnColor,
                           foregroundColor: AppConstant.appMainColor,
                           title: "Verify",
-                          onPressed: () async {
-                            try {
-                              User? user = await emailValidationController
-                                  .refreshEmail(widget.user);
-                              if (user != null && user.emailVerified) {
-                                Get.snackbar('Success : ',
-                                    'Email has been verified successfully');
-                                Get.off(const HomePage(),
-                                    transition: Transition.leftToRightWithFade);
-                              } else {
-                                Get.snackbar('Failed : ',
-                                    'Email has been not verified check your mail');
-                              }
-                            } catch (e) {
-                              print(e);
-                            }
+                          onPressed: () {
+                            emailValidationController
+                                .sendingEmailVerification(widget.user);
                           },
                           textColor: Colors.white,
                           width: Get.width * 0.20,
                         ),
                       ),
-                      const SizedBox(
-                        width: 18,
-                      ),
+                      const SizedBox(width: 18,),
                       InkWell(
-                          onTap: () {
-                            emailValidationController.refreshEmail(widget.user);
-                          },
+                        onTap: () async {
+                          try {
+                            User? user = await emailValidationController
+                                .refreshEmail(widget.user);
+                            if (user != null && user.emailVerified) {
+                              Get.snackbar('Success : ',
+                                  'Email has been verified successfully');
+                              Get.off(const HomePage(),
+                                  transition: Transition.leftToRightWithFade);
+                            } else {
+                              Get.snackbar('Failed : ',
+                                  'Email has been not verified check your mail');
+                            }
+                          } catch (e) {
+                            print(e);
+                          }
+                        },
                           child: const Row(
-                            children: [
-                              Icon(
-                                Icons.refresh,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              Text(
-                                "Check",
-                                style: TextStyle(color: Colors.white),
-                              )
-                            ],
-                          ))
+                        children: [
+                          Icon(
+                            Icons.refresh,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          Text(
+                            "Check",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ))
                     ],
                   )
                 ],
