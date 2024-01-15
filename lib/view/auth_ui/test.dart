@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/widget/custom_buttons.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../utils/app_constant.dart';
 
@@ -25,7 +23,7 @@ class _SendOtpState extends State<SendOtp> {
             appBar: AppBar(
               title: const Text("SEND OTP",
                   style:
-                  TextStyle(fontSize: 35, fontFamily: 'BebasNeue-Regular')),
+                      TextStyle(fontSize: 35, fontFamily: 'BebasNeue-Regular')),
               centerTitle: true,
               backgroundColor: AppConstant.transparent,
               elevation: 0,
@@ -42,11 +40,10 @@ class _SendOtpState extends State<SendOtp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-
-                          SizedBox(
+                          const SizedBox(
                             height: 80,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 600,
                             height: 80,
                             child: CustomTextField(

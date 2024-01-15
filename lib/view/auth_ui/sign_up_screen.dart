@@ -8,7 +8,6 @@ import '../../controller/google_sign_in_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
-import 'email_validation.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -103,7 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   email: value,
                                 ),
                                 prefixIcon: const Icon(Icons.email),
-                                controller: _passwordTextController,
+                                controller: _emailTextController,
                                 hintText: "Email",
                                 contentPadding: const EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
@@ -132,12 +131,12 @@ class _SignUpPageState extends State<SignUpPage> {
                                 title: "Sign Up",
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
-                                   await _emailPassController.signupUser(
+                                    await _emailPassController.signupUser(
                                         _emailTextController.text,
                                         _passwordTextController.text,
                                         _nameTextController.text);
-                                  await _emailPassController.checkCurrentUser();
-
+                                    await _emailPassController
+                                        .checkCurrentUser();
                                   }
                                 },
                                 textColor: Colors.white,

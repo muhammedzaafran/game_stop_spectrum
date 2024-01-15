@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/otp_field_style.dart';
+import 'package:otp_text_field/style.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
-import '../widget/custom_textfield.dart';
 
-class SendOtpPno extends StatefulWidget {
-  const SendOtpPno({super.key});
+class VerifyOtp extends StatefulWidget {
+  const VerifyOtp({super.key});
 
   @override
-  State<SendOtpPno> createState() => _SendOtpPnoState();
+  State<VerifyOtp> createState() => _VerifyOtpState();
 }
 
-class _SendOtpPnoState extends State<SendOtpPno> {
+class _VerifyOtpState extends State<VerifyOtp> {
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,41 +36,53 @@ class _SendOtpPnoState extends State<SendOtpPno> {
               height: Get.height,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Lottie.asset('asset/json/playstation.json',
-                      width: 100,
-                      height: 100,
+                  Lottie.asset('asset/json/otp.json',
+                      width: 300,
+                      height: 300,
                       animate: true,
                       fit: BoxFit.cover,
                       repeat: true),
-                  const SizedBox(height: 30,),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   Form(
                       key: _formKey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: Get.width * 0.85,
-                            height: 80,
-                            child: const CustomTextField(
-                              prefixIcon: Icon(Icons.phone_android_sharp),
-                              hintText: "      enter number",
-                            ),
+                          OTPTextField(
+                            otpFieldStyle:
+                                OtpFieldStyle(backgroundColor: Colors.white),
+                            length: 6,
+                            width: Get.width * 09,
+                            fieldWidth: 50,
+                            style: const TextStyle(fontSize: 17),
+                            textFieldAlignment: MainAxisAlignment.spaceAround,
+                            fieldStyle: FieldStyle.box,
+                            spaceBetween: 5,
+                            onCompleted: (pin) {
+                              print("Completed: " + pin);
+                            },
+                          ),
+                          const SizedBox(
+                            height: 15,
                           ),
                           SizedBox(
                             child: CustomElevatedBtn(
                               height: 40,
                               backgroundColor: AppConstant.appBtnColor,
                               foregroundColor: AppConstant.appMainColor,
-                              title: "GET OTP",
+                              title: "VERIFY OTP",
                               onPressed: () {},
                               textColor: Colors.white,
                               width: Get.width * 0.30,
                             ),
                           ),
+
                         ],
                       ))
                 ],
