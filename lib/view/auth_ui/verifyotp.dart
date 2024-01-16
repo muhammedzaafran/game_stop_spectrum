@@ -4,11 +4,13 @@ import 'package:lottie/lottie.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
+import '../../controller/verify_phone_controller.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 
 class VerifyOtp extends StatefulWidget {
-  const VerifyOtp({super.key});
+  final String verificationId;
+  const VerifyOtp({super.key, required this.verificationId});
 
   @override
   State<VerifyOtp> createState() => _VerifyOtpState();
@@ -16,7 +18,9 @@ class VerifyOtp extends StatefulWidget {
 
 class _VerifyOtpState extends State<VerifyOtp> {
   final _formKey = GlobalKey<FormState>();
-
+  final SentOtpController sentOtpController = Get.put(SentOtpController());
+  OtpFieldController otpFieldController = OtpFieldController();
+  String enteredOtp = '';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,6 +61,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                           OTPTextField(
                             otpFieldStyle:
                                 OtpFieldStyle(backgroundColor: Colors.white),
+                            controller: otpFieldController,
                             length: 6,
                             width: Get.width * 09,
                             fieldWidth: 50,
@@ -66,6 +71,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                             spaceBetween: 5,
                             onCompleted: (pin) {
                               print("Completed: " + pin);
+                              enteredOtp=pin;
                             },
                           ),
                           const SizedBox(
@@ -77,12 +83,15 @@ class _VerifyOtpState extends State<VerifyOtp> {
                               backgroundColor: AppConstant.appBtnColor,
                               foregroundColor: AppConstant.appMainColor,
                               title: "VERIFY OTP",
-                              onPressed: () {},
+                              onPressed: () {
+                                sentOtpController.verifyOtp(
+                                    enteredOtp,
+                                    widget.verificationId);
+                              },
                               textColor: Colors.white,
                               width: Get.width * 0.30,
                             ),
                           ),
-
                         ],
                       ))
                 ],

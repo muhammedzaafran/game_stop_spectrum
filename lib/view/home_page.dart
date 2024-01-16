@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_stop_spectrum/view/widget/custom_buttons.dart';
-import 'package:game_stop_spectrum/view/widget/product_grid_item.dart';
+import 'package:game_stop_spectrum/view/widget/custom_grid_item.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ProductGridItem(title: "Products", imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', price: 500),
                 CustomElevatedBtn(
                   height: 60,
                   backgroundColor: AppConstant.appBtnColor,

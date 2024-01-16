@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/auth_ui/sentotp.dart';
+import 'package:game_stop_spectrum/view/auth_ui/verifyotp.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +9,7 @@ import '../../controller/google_sign_in_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
+
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -168,7 +171,9 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                               SocialBtn(
                                 image: "asset/images/phoneIn.svg",
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(()=>const SendOtpPno());
+                                },
                               )
                             ],
                           )

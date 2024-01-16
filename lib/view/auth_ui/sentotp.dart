@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import '../../controller/verify_phone_controller.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 import '../widget/custom_textfield.dart';
@@ -14,6 +15,9 @@ class SendOtpPno extends StatefulWidget {
 
 class _SendOtpPnoState extends State<SendOtpPno> {
   final _formKey = GlobalKey<FormState>();
+  final SentOtpController sentOtpController =
+  Get.put(SentOtpController());
+  final _sendTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,7 +56,8 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                           SizedBox(
                             width: Get.width * 0.85,
                             height: 80,
-                            child: const CustomTextField(
+                            child: CustomTextField(
+                              controller: _sendTextController,
                               prefixIcon: Icon(Icons.phone_android_sharp),
                               hintText: "      enter number",
                             ),
@@ -63,7 +68,9 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                               backgroundColor: AppConstant.appBtnColor,
                               foregroundColor: AppConstant.appMainColor,
                               title: "GET OTP",
-                              onPressed: () {},
+                              onPressed: () {
+                                sentOtpController.sendOtp(_sendTextController.text);
+                              },
                               textColor: Colors.white,
                               width: Get.width * 0.30,
                             ),
