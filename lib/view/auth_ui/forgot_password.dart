@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 import '../widget/custom_textfield.dart';
@@ -16,6 +14,7 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,7 +33,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             height: Get.height,
             decoration: const BoxDecoration(color: AppConstant.black),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Lottie.asset('asset/json/qstnmark.json',

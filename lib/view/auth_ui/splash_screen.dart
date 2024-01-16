@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,6 +18,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   User? user = FirebaseAuth.instance.currentUser;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -27,13 +27,13 @@ class _SplashScreenState extends State<SplashScreen> {
       logInCheck(context);
     });
   }
+
   Future<void> logInCheck(BuildContext context) async {
     if (user != null) {
       Get.offAll(() => const HomePage(),
-          transition: Transition.fade, duration: const Duration(seconds: 2));
+          transition: Transition.fade, duration: const Duration(seconds: 5));
     } else {
-      Get.to(() => const OnboardingScreen(),
-          transition: Transition.fade);
+      Get.to(() => const OnboardingScreen(), transition: Transition.fade);
     }
   }
 

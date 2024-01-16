@@ -29,21 +29,19 @@ class _SendOtpPnoState extends State<SendOtpPno> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
-              width: Get.width,
-              height: Get.height,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Lottie.asset('asset/json/playstation.json',
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       animate: true,
                       fit: BoxFit.cover,
                       repeat: true),
                   const SizedBox(
-                    height: 30,
+                    height: 110,
                   ),
                   Form(
                       key: _formKey,
