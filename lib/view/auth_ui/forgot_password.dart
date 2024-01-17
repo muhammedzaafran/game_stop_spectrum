@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import '../../controller/email_sign_in_controller.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 import '../widget/custom_textfield.dart';
@@ -14,7 +15,9 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
-
+  final EmailPassController _emailPassController =
+  Get.put(EmailPassController());
+  final _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,19 +55,31 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       children: [
                         SizedBox(
                           width: Get.width * 0.85,
-                          height: 80,
+                          height: 90,
                           child: const CustomTextField(
-                            prefixIcon: Icon(Icons.email),
-                            hintText: "      enter number",
+                            prefixIcon: Icon(Icons.email,color: Colors.black,),
+                            hintText: " Enter mail",
                           ),
                         ),
                         SizedBox(
                           child: CustomElevatedBtn(
                             height: 40,
+
                             backgroundColor: AppConstant.appBtnColor,
                             foregroundColor: AppConstant.appMainColor,
                             title: "Reset Password",
-                            onPressed: () {},
+                            onPressed: () {
+                              String email = _emailTextController.text.trim();
+                              if (email.isEmpty) {
+                                Get.snackbar(
+                                  "Error",
+                                  "Please enter all details",
+                                  snackPosition: SnackPosition.TOP,
+                                );
+                              } else {
+                                _emailPassController.forgotPassword(email);
+                              }
+                            },
                             textColor: Colors.white,
                             width: Get.width * 0.30,
                           ),

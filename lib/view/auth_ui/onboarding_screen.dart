@@ -88,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           backgroundColor: AppConstant.appBtnColor,
                           title: "Login",
                           onPressed: () {
-                            Get.off(() => const SignInPage(),
+                            Get.to(() => const SignInPage(),
                                 transition: Transition.leftToRightWithFade);
                           },
                           textColor: Colors.white,

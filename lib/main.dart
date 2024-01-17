@@ -2,8 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/auth_ui/forgot_password.dart';
 import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
+import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:game_stop_spectrum/view/test.dart';
+import 'package:game_stop_spectrum/view/widget/custom_grid.dart';
+import 'package:game_stop_spectrum/view/widget/custom_grid_item.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: ForgotPasswordPage()
         ));
   }
 }

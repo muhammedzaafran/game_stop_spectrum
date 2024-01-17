@@ -15,8 +15,7 @@ class SendOtpPno extends StatefulWidget {
 
 class _SendOtpPnoState extends State<SendOtpPno> {
   final _formKey = GlobalKey<FormState>();
-  final SentOtpController sentOtpController =
-  Get.put(SentOtpController());
+  final SentOtpController sentOtpController = Get.put(SentOtpController());
   final _sendTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                             height: 80,
                             child: CustomTextField(
                               controller: _sendTextController,
-                              prefixIcon: Icon(Icons.phone_android_sharp),
+                              prefixIcon: const Icon(Icons.phone_android_sharp),
                               hintText: "      enter number",
                             ),
                           ),
@@ -69,7 +68,9 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                               foregroundColor: AppConstant.appMainColor,
                               title: "GET OTP",
                               onPressed: () {
-                                sentOtpController.sendOtp(_sendTextController.text);
+                                String phoneNumber =
+                                    "+91" + _sendTextController.text.trim();
+                                sentOtpController.sendOtp(phoneNumber);
                               },
                               textColor: Colors.white,
                               width: Get.width * 0.30,

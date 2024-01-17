@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/auth_ui/sentotp.dart';
+import 'package:game_stop_spectrum/view/auth_ui/sign_in_screen.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
@@ -117,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                                 prefixIcon: const Icon(Icons.lock),
                                 controller: _passwordTextController,
-                                hintText: "password",
+                                hintText: "Password",
                                 contentPadding: const EdgeInsets.symmetric(
                                     vertical: 25.0, horizontal: 16.0),
                               ),
@@ -145,7 +147,10 @@ class _SignUpPageState extends State<SignUpPage> {
                               Center(
                                 child: CustomTextBtn(
                                   title: "Already have an account",
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(() => const SignInPage(),
+                                        transition: Transition.leftToRightWithFade);
+                                  },
                                   width: 10,
                                   height: 10,
                                 ),
@@ -190,7 +195,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               SocialBtn(
                                 image: "asset/images/phoneIn.svg",
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(() => const SendOtpPno());
+                                },
                               )
                             ],
                           )

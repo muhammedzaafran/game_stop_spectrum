@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -57,7 +58,25 @@ class EmailPassController extends GetxController {
       Get.snackbar('Error', e.toString());
     }
   }
+  Future<UserCredential?> signinUser(
+      String userEmail, String userPassword) async {
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: userEmail,
+        password: userPassword,
+      );
 
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Get.snackbar('Error', 'No user Found with this Email');
+      } else if (e.code == 'wrong-password') {
+        Get.snackbar('Error', 'Password did not match');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
   Future<void> checkCurrentUser() async {
     try {
       // Fetch the current user
@@ -74,6 +93,26 @@ class EmailPassController extends GetxController {
       }
     } catch (e) {
       Get.snackbar('Error', e.toString());
+    }
+  }
+  Future<void> forgotPassword(
+      String userEmail,
+      ) async {
+    try {
+      await auth.sendPasswordResetEmail(email: userEmail);
+      Get.snackbar(
+        "Request Sent Successfully",
+        "Password reset link sent to $userEmail",
+        snackPosition: SnackPosition.TOP,
+      );
+      Get.off(const HomePage(),
+          transition: Transition.leftToRightWithFade);
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar(
+        "Error",
+        "$e",
+        snackPosition: SnackPosition.TOP,
+      );
     }
   }
 }

@@ -1,15 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/auth_ui/forgot_password.dart';
 import 'package:game_stop_spectrum/view/auth_ui/sentotp.dart';
+import 'package:game_stop_spectrum/view/auth_ui/sign_up_screen.dart';
 import 'package:game_stop_spectrum/view/auth_ui/verifyotp.dart';
+import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
 
+import '../../controller/email_sign_in_controller.dart';
 import '../../controller/google_sign_in_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
-
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -25,7 +29,9 @@ class _SignInPageState extends State<SignInPage> {
 
   final _passwordTextController = TextEditingController();
   final GoogleSignInController _googleSignInController =
-  Get.put(GoogleSignInController());
+      Get.put(GoogleSignInController());
+  final EmailPassController _emailPassController =
+      Get.put(EmailPassController());
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +114,9 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                               CustomTextBtn(
                                 title: "Forgot password?",
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(() => const ForgotPasswordPage());
+                                },
                                 width: 10,
                                 height: 10,
                               ),
@@ -117,8 +125,25 @@ class _SignInPageState extends State<SignInPage> {
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign In",
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {}
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    try {
+                                      UserCredential? userCredential =
+                                          await _emailPassController
+                                          .signinUser(
+                                        _emailTextController.text,
+                                        _passwordTextController.text,
+                                      );
+                                      if (userCredential!
+                                          .user!.emailVerified) {
+                                        Get.off(() => const HomePage(),
+                                            transition: Transition
+                                                .leftToRightWithFade);
+                                      }
+                                    } catch (e) {
+                                      print(e);
+                                    }
+                                  }
                                 },
                                 textColor: Colors.white,
                                 width: 357,
@@ -126,7 +151,9 @@ class _SignInPageState extends State<SignInPage> {
                               Center(
                                 child: CustomTextBtn(
                                   title: "Create new account",
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(() => const SignUpPage());
+                                  },
                                   width: 10,
                                   height: 10,
                                 ),
@@ -163,6 +190,7 @@ class _SignInPageState extends State<SignInPage> {
                               SocialBtn(
                                 image: "asset/images/google_icon.svg",
                                 onTap: () {
+
                                   _googleSignInController.signUpWithGoogle();
                                 },
                               ),
@@ -172,7 +200,7 @@ class _SignInPageState extends State<SignInPage> {
                               SocialBtn(
                                 image: "asset/images/phoneIn.svg",
                                 onTap: () {
-                                  Get.to(()=>const SendOtpPno());
+                                  Get.to(() => const SendOtpPno());
                                 },
                               )
                             ],
