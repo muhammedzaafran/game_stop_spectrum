@@ -17,6 +17,7 @@ class _SendOtpPnoState extends State<SendOtpPno> {
   final _formKey = GlobalKey<FormState>();
   final SentOtpController sentOtpController = Get.put(SentOtpController());
   final _sendTextController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,7 +58,10 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                             height: 80,
                             child: CustomTextField(
                               controller: _sendTextController,
-                              prefixIcon: const Icon(Icons.phone_android_sharp),
+                              prefixIcon: const Icon(
+                                Icons.phone_android_sharp,
+                                color: Colors.black,
+                              ),
                               hintText: "      enter number",
                             ),
                           ),

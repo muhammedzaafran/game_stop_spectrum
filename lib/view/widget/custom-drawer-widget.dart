@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../model/product_model.dart';
+import '../../model/user_model.dart';// Replace with the correct import path
 
 class YourWidget extends StatelessWidget {
   final String uId; // Assuming uId is defined somewhere in your widget
@@ -24,24 +24,13 @@ class YourWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: dataLength,
             itemBuilder: (context, index) {
-              final productData = data[index].data() as Map<String, dynamic>;
-              var product = ProductModel(
-                productId: productData['productId'],
-                categoryId: productData['categoryId'],
-                productName: productData['productName'],
-                categoryName: productData['categoryName'],
-                price: productData['price'],
-                productImage: productData['productImage'],
-                productDescription: productData['productDescription'],
-                createdAt: productData['createdAt'],
-                updatedAt: productData['updatedAt'],
-                consoleType: productData['consoleType'],
-              );
+              final userData = data[index].data() as Map<String, dynamic>;
+              var user = UserModel.fromMap(userData);
 
-              // You can now use 'product' to display your UI components
+              // You can now use 'user' to display your UI components
               return ListTile(
-                title: Text(product.productName),
-                subtitle: Text(product.price),
+                title: Text(user.username),
+                subtitle: Text(user.email),
                 // Add other UI components as needed
               );
             },

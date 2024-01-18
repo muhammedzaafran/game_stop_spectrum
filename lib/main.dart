@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ForgotPasswordPage()
+          home: SplashScreen()
         ));
   }
 }

@@ -93,7 +93,10 @@ class _SignInPageState extends State<SignInPage> {
                                       Validator.validateEmail(
                                         email: value,
                                       ),
-                                  prefixIcon: const Icon(Icons.email),
+                                  prefixIcon: const Icon(
+                                    Icons.email,
+                                    color: Colors.black,
+                                  ),
                                   controller: _emailTextController,
                                   hintText: "Email",
                                   contentPadding: const EdgeInsets.symmetric(
@@ -106,7 +109,7 @@ class _SignInPageState extends State<SignInPage> {
                                     Validator.validatePassword(
                                   password: value,
                                 ),
-                                prefixIcon: const Icon(Icons.lock),
+                                prefixIcon: const Icon(Icons.lock, color: Colors.black),
                                 controller: _passwordTextController,
                                 hintText: "Password",
                                 contentPadding: const EdgeInsets.symmetric(
@@ -129,16 +132,14 @@ class _SignInPageState extends State<SignInPage> {
                                   if (_formKey.currentState!.validate()) {
                                     try {
                                       UserCredential? userCredential =
-                                          await _emailPassController
-                                          .signinUser(
+                                          await _emailPassController.signinUser(
                                         _emailTextController.text,
                                         _passwordTextController.text,
                                       );
-                                      if (userCredential!
-                                          .user!.emailVerified) {
+                                      if (userCredential!.user!.emailVerified) {
                                         Get.off(() => const HomePage(),
-                                            transition: Transition
-                                                .leftToRightWithFade);
+                                            transition:
+                                                Transition.leftToRightWithFade);
                                       }
                                     } catch (e) {
                                       print(e);
@@ -190,7 +191,6 @@ class _SignInPageState extends State<SignInPage> {
                               SocialBtn(
                                 image: "asset/images/google_icon.svg",
                                 onTap: () {
-
                                   _googleSignInController.signUpWithGoogle();
                                 },
                               ),

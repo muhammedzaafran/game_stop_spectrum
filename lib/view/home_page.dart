@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
+import 'package:game_stop_spectrum/view/widget/custom-drawer-widget.dart';
 import '../utils/app_constant.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,80 +53,7 @@ class _HomePageState extends State<HomePage> {
           // ],
           borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
-        drawer: Container(
-          child: ListTileTheme(
-            textColor: Colors.white,
-            iconColor: Colors.white,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: 128.0,
-                  height: 128.0,
-                  margin: const EdgeInsets.only(
-                    top: 24.0,
-                    bottom: 64.0,
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    color: Colors.black26,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.network(
-                      'https://wall.alphacoders.com/big.php?i=1294019'),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.home),
-                  title: Text('Home'),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.account_circle_rounded),
-                  title: const Text('Profile'),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.favorite),
-                  title: const Text('Favourites'),
-                ),
-                ListTile(
-                  onTap: () async {
-                    FirebaseAuth _auth = FirebaseAuth.instance;
-                    await _auth.signOut();
-
-                    // Check the condition
-                    bool shouldNavigateToLoginPage = true;
-
-                    if (shouldNavigateToLoginPage) {
-                      // Use Navigator to navigate to the login page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OnboardingScreen()),
-                      );
-                    }
-                  },
-                  leading: const Icon(Icons.settings),
-                  title: Text('Sign out'),
-                ),
-                const Spacer(),
-                DefaultTextStyle(
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white54,
-                  ),
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 16.0,
-                    ),
-                    child: const Text('Terms of Service | Privacy Policy'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        drawer:DrawerWidget(),
         child: Scaffold(
           extendBodyBehindAppBar: true,
           backgroundColor: AppConstant.black,

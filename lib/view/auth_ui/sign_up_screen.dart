@@ -90,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       Validator.validateName(
                                         name: value,
                                       ),
-                                  prefixIcon: const Icon(Icons.account_circle),
+                                  prefixIcon: const Icon(Icons.account_circle, color: Colors.black,),
                                   controller: _nameTextController,
                                   hintText: "Name",
                                   contentPadding: const EdgeInsets.symmetric(
@@ -103,7 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Validator.validateEmail(
                                   email: value,
                                 ),
-                                prefixIcon: const Icon(Icons.email),
+                                prefixIcon: const Icon(Icons.email, color: Colors.black,),
                                 controller: _emailTextController,
                                 hintText: "Email",
                                 contentPadding: const EdgeInsets.symmetric(
@@ -117,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Validator.validatePassword(
                                   password: value,
                                 ),
-                                prefixIcon: const Icon(Icons.lock),
+                                prefixIcon: const Icon(Icons.lock, color: Colors.black),
                                 controller: _passwordTextController,
                                 hintText: "Password",
                                 contentPadding: const EdgeInsets.symmetric(
