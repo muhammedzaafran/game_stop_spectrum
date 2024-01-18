@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../model/product_model.dart';
+import '../../model/user_model.dart';
+import '../utils/app_constant.dart';// Replace with the correct import path
 
-class YourWidget extends StatelessWidget {
+class DrawerHeadTile extends StatelessWidget {
   final String uId; // Assuming uId is defined somewhere in your widget
 
-  YourWidget({required this.uId});
+  DrawerHeadTile({required this.uId});
 
   @override
   Widget build(BuildContext context) {
@@ -24,25 +26,35 @@ class YourWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: dataLength,
             itemBuilder: (context, index) {
-              final productData = data[index].data() as Map<String, dynamic>;
-              var product = ProductModel(
-                productId: productData['productId'],
-                categoryId: productData['categoryId'],
-                productName: productData['productName'],
-                categoryName: productData['categoryName'],
-                price: productData['price'],
-                productImage: productData['productImage'],
-                productDescription: productData['productDescription'],
-                createdAt: productData['createdAt'],
-                updatedAt: productData['updatedAt'],
-                consoleType: productData['consoleType'],
-              );
+              final userData = data[index].data() as Map<String, dynamic>;
+              var user = UserModel.fromMap(userData);
 
-              // You can now use 'product' to display your UI components
-              return ListTile(
-                title: Text(product.productName),
-                subtitle: Text(product.price),
-                // Add other UI components as needed
+              // You can now use 'user' to display your UI components
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0, vertical: 20.0),
+                child: ListTile(
+                  titleAlignment: ListTileTitleAlignment.center,
+                  title: Text(
+                    "${user.username}",
+                    style: TextStyle(
+                      color: AppConstant.appTextColor,
+                      fontFamily: 'Roboto-Regular',
+                      fontSize: 15.sp,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "${user.email}",
+                    style: TextStyle(
+                        color: AppConstant.appTextColor,
+                        fontFamily: 'Roboto-Regular',
+                        fontSize: 10.sp),
+                  ),
+                  leading: CircleAvatar(
+                      radius: 22.0,
+                      backgroundColor: AppConstant.appMainColor,
+                      child: Image.network("${user.userImg}")),
+                ),
               );
             },
           );
