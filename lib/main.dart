@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/auth_ui/forgot_password.dart';
 import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
+import 'package:game_stop_spectrum/view/settings.dart';
 import 'package:game_stop_spectrum/view/test.dart';
 import 'package:game_stop_spectrum/view/widget/custom_grid.dart';
 import 'package:game_stop_spectrum/view/widget/custom_grid_item.dart';

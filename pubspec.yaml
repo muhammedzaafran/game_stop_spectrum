@@ -98,6 +98,9 @@ flutter:
      - family: BebasNeue-Regular
        fonts:
          - asset: asset/fonts/BebasNeue-Regular.ttf
+     - family: Anton-Regular
+       fonts:
+         - asset: asset/fonts/Anton-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
