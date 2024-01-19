@@ -6,7 +6,9 @@ import 'package:game_stop_spectrum/view/widget/banner_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:game_stop_spectrum/view/widget/category_widget.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../controller/get_user_data_controller.dart';
 import '../controller/google_sign_in_controller.dart';
 import '../utils/app_constant.dart';
@@ -143,38 +145,113 @@ class _MainPageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  ListTile(
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return const HomePage();
-                        }),
-                        (route) => false,
-                      );
-                    },
-                    leading: const Icon(Icons.home),
-                    title: const Text('Home'),
+                  const Divider(
+                    indent: 10.0,
+                    endIndent: 10.0,
+                    thickness: 1.5,
+                    color: Colors.grey,
                   ),
-                  ListTile(
-                    onTap: () {},
-                    leading: const Icon(Icons.account_box),
-                    title: const Text('Profile'),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: Text(
+                        "Home",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: Icon(
+                        Icons.home,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
+                    ),
                   ),
-                  ListTile(
-                    onTap: () {},
-                    leading: const Icon(Icons.favorite),
-                    title: const Text('Favourites'),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: const Text(
+                        "Products",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: const Icon(
+                        Icons.production_quantity_limits,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
+                      onTap: () {
+
+                      },
+                    ),
                   ),
-                  ListTile(
-                    onTap: () async {
-                      await FirebaseAuth.instance.signOut();
-                      Get.offAll(() => const OnboardingScreen());
-                    },
-                    leading: const Icon(Icons.logout, color: Colors.white),
-                    title: const Text(
-                      'Logout',
-                      style: TextStyle(color: Colors.white),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: Text(
+                        "Orders",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: const Icon(
+                        Icons.shopping_bag,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
+                      onTap: () {
+                        // Get.off(() => OrdersPage());
+                      },
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: Text(
+                        "Contact",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: Icon(
+                        Icons.help,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      onTap: () async {
+                        GoogleSignIn googleSignIn = GoogleSignIn();
+                        FirebaseAuth _auth = FirebaseAuth.instance;
+                        await _auth.signOut();
+                        await googleSignIn.signOut();
+                        Get.offAll(() => const OnboardingScreen());
+                      },
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: const Text(
+                        "Logout",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: const Icon(
+                        Icons.logout,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -208,8 +285,8 @@ class _MainPageState extends State<HomePage> {
               backgroundColor: AppConstant.transparent,
               elevation: 0,
             ),
-            body: Column(
-              children: [BannerWidget()],
+            body: const Column(
+              children: [BannerWidget(),CategoryWidget()],
             ),
           ),
         );

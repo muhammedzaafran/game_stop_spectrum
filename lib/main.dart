@@ -7,6 +7,7 @@ import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:game_stop_spectrum/view/settings.dart';
 import 'package:game_stop_spectrum/view/test.dart';
+import 'package:game_stop_spectrum/view/widget/category_widget.dart';
 import 'package:game_stop_spectrum/view/widget/custom_grid.dart';
 import 'package:game_stop_spectrum/view/widget/custom_grid_item.dart';
 import 'package:get/get.dart';
