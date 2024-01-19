@@ -81,7 +81,7 @@ class _BannerWidgetState extends State<BannerWidget> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color:
-                          currentindex == entry.key ? Colors.red : Colors.grey,
+                          currentindex == entry.key ? Colors.teal: Colors.white,
                     ),
                   ),
                 ),

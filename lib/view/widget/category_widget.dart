@@ -3,10 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../controller/category_product_controller.dart';
 import '../../model/category_model.dart';
-
 
 class CategoryWidget extends StatefulWidget {
   const CategoryWidget({super.key});
@@ -17,7 +15,7 @@ class CategoryWidget extends StatefulWidget {
 
 class _CategoryWidgetState extends State<CategoryWidget> {
   final CategoryDataController _categoryDataController =
-  Get.put(CategoryDataController());
+      Get.put(CategoryDataController());
 
   @override
   Widget build(BuildContext context) {
@@ -87,29 +85,29 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   child: Stack(
                                       alignment: Alignment.center,
                                       children: [
-                                        CircleAvatar(
-                                          backgroundColor: Colors.grey[200],
-                                          radius: 39,
+                                        const CircleAvatar(
+                                          backgroundColor: Colors.black,
+                                          radius: 35,
                                         ),
                                         CircleAvatar(
-                                          radius: 38,
-                                          backgroundColor: Colors.white,
+                                          radius: 35,
+                                          backgroundColor: Colors.black,
                                           child: ClipOval(
                                             child: CachedNetworkImage(
                                               imageUrl:
-                                              categoryModel.categoryImg,
+                                                  categoryModel.categoryImg,
                                               fit: BoxFit.cover,
                                               placeholder: (context, url) =>
-                                              const ColoredBox(
+                                                  const ColoredBox(
                                                 color: Colors.white,
                                                 child: Center(
                                                   child:
-                                                  CupertinoActivityIndicator(),
+                                                      CupertinoActivityIndicator(),
                                                 ),
                                               ),
                                               errorWidget:
                                                   (context, url, error) =>
-                                              const Icon(Icons.error),
+                                                      const Icon(Icons.error),
                                             ),
                                           ),
                                         ),
