@@ -103,12 +103,14 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                                 .refreshEmail(widget.user);
                             if (user != null && user.emailVerified) {
                               Get.snackbar('Success : ',
-                                  'Email has been verified successfully');
+                                  'Email has been verified successfully',  colorText: Colors.white,
+                                snackStyle: SnackStyle.GROUNDED,);
                               Get.off(const HomePage(),
                                   transition: Transition.leftToRightWithFade);
                             } else {
                               Get.snackbar('Failed : ',
-                                  'Email has been not verified check your mail');
+                                  'Email has been not verified check your mail', colorText: Colors.white,
+                                snackStyle: SnackStyle.GROUNDED,);
                             }
                           } catch (e) {
                             print(e);

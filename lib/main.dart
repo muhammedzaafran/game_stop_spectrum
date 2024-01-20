@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
 import 'package:game_stop_spectrum/view/product_details.dart';
 import 'package:get/get.dart';
 
@@ -20,8 +21,8 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return  ScreenUtilInit(
-        designSize: const Size(360, 800),
+    return  const ScreenUtilInit(
+        designSize:  Size(360, 800),
         minTextAdapt: true,
         splitScreenMode: true,
         child: GetMaterialApp(

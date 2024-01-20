@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/Screens/profile_page.dart';
 import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
 import 'package:game_stop_spectrum/view/widget/banner_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:game_stop_spectrum/view/widget/category_widget.dart';
+import 'package:game_stop_spectrum/view/widget/custom_grid.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../controller/get_user_data_controller.dart';
@@ -185,16 +187,14 @@ class _MainPageState extends State<HomePage> {
                         Icons.arrow_forward,
                         color: AppConstant.appTextColor,
                       ),
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
                       titleAlignment: ListTileTitleAlignment.center,
-                      title: Text(
+                      title: const Text(
                         "Orders",
                         style: TextStyle(color: AppConstant.appTextColor),
                       ),
@@ -224,6 +224,27 @@ class _MainPageState extends State<HomePage> {
                         color: AppConstant.appTextColor,
                       ),
                       trailing: Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      onTap: () {
+                        Get.to(() => const ProfilePage());
+                      },
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: const Text(
+                        "Profile",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: const Icon(
+                        Icons.account_circle,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: const Icon(
                         Icons.arrow_forward,
                         color: AppConstant.appTextColor,
                       ),
@@ -285,8 +306,55 @@ class _MainPageState extends State<HomePage> {
               backgroundColor: AppConstant.transparent,
               elevation: 0,
             ),
-            body: const Column(
-              children: [BannerWidget(),CategoryWidget()],
+            body: SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.center,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Trending",
+                        style: TextStyle(
+                            fontFamily: 'BebasNeue-Regular',
+                            fontSize: 30,
+                            color: Colors.white),
+                      ),
+                    ),
+                    BannerWidget(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Genres",
+                        style: TextStyle(
+                            fontFamily: 'BebasNeue-Regular',
+                            fontSize: 30,
+                            color: Colors.white),
+                      ),
+                    ),
+                    CategoryWidget(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "All Products",
+                        style: TextStyle(
+                            fontFamily: 'BebasNeue-Regular',
+                            fontSize: 30,
+                            color: Colors.white),
+                      ),
+                    ),
+                    GetProductWidget()
+                  ],
+                ),
+              ),
             ),
           ),
         );

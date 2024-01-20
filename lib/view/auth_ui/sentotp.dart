@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import '../../controller/verify_phone_controller.dart';
+import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 import '../widget/custom_textfield.dart';
@@ -57,6 +58,10 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                             width: Get.width * 0.85,
                             height: 80,
                             child: CustomTextField(
+                              keyboardType: TextInputType.number,
+                              validateInput: (value) =>
+                                  Validator.validatePhoneNumber(
+                                      phoneNumber: value),
                               controller: _sendTextController,
                               prefixIcon: const Icon(
                                 Icons.phone_android_sharp,
@@ -72,9 +77,11 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                               foregroundColor: AppConstant.appMainColor,
                               title: "GET OTP",
                               onPressed: () {
-                                String phoneNumber =
-                                    "+91" + _sendTextController.text.trim();
-                                sentOtpController.sendOtp(phoneNumber);
+                                if (_formKey.currentState!.validate()) {
+                                  String phoneNumber =
+                                      "+91" + _sendTextController.text.trim();
+                                  sentOtpController.sendOtp(phoneNumber);
+                                }
                               },
                               textColor: Colors.white,
                               width: Get.width * 0.30,

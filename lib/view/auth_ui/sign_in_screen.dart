@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 
 import '../../controller/email_sign_in_controller.dart';
 import '../../controller/google_sign_in_controller.dart';
+import '../../controller/password_visibility_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
@@ -32,6 +33,8 @@ class _SignInPageState extends State<SignInPage> {
       Get.put(GoogleSignInController());
   final EmailPassController _emailPassController =
       Get.put(EmailPassController());
+  final PasswordVisibilityController _passwordVisibilityController =
+      Get.put(PasswordVisibilityController());
 
   @override
   Widget build(BuildContext context) {
@@ -104,19 +107,32 @@ class _SignInPageState extends State<SignInPage> {
                               const SizedBox(
                                 height: 15,
                               ),
-                              CustomTextField(
-                                validateInput: (value) =>
-                                    Validator.validatePassword(
-                                  password: value,
-                                ),
-                                prefixIcon: const Icon(Icons.lock, color: Colors.black),
-                                controller: _passwordTextController,
-                                hintText: "Password",
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 25.0, horizontal: 16.0),
-                              ),
+                              Obx(() => CustomTextField(
+                                    validateInput: (value) =>
+                                        Validator.validatePassword(
+                                      password: value,
+                                    ),
+                                    obscureText: _passwordVisibilityController
+                                        .passwordVisible.value,
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          _passwordVisibilityController
+                                              .updateVisibility();
+                                        },
+                                        icon: Icon(_passwordVisibilityController
+                                                .passwordVisible.value
+                                            ? Icons.visibility
+                                            : Icons.visibility_off),color: Colors.black),
+                                    prefixIcon: const Icon(Icons.lock,
+                                        color: Colors.black),
+                                    controller: _passwordTextController,
+                                    hintText: "Password",
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 25.0, horizontal: 16.0),
+                                  )),
                               CustomTextBtn(
                                 title: "Forgot password?",
+                                foregroundColor: Colors.white,
                                 onPressed: () {
                                   Get.to(() => const ForgotPasswordPage());
                                 },
@@ -152,6 +168,7 @@ class _SignInPageState extends State<SignInPage> {
                               Center(
                                 child: CustomTextBtn(
                                   title: "Create new account",
+                                  foregroundColor: Colors.white,
                                   onPressed: () {
                                     Get.to(() => const SignUpPage());
                                   },

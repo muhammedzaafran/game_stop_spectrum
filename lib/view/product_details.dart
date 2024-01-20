@@ -1,5 +1,11 @@
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/utils/app_constant.dart';
+import 'package:get/get.dart';
+import '../controller/banner_controller.dart';
 
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
@@ -9,92 +15,101 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  int currentindex = 0;
   final CarouselController carouselController = CarouselController();
-
-  @override
-  // Load favorite status from SharedPreferences
+  final BannerController _bannerController = Get.put(BannerController());
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    Size halfwidth = MediaQuery.of(context).size / 2;
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: AppConstant.black,
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          title: Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.all(10),
-            width: size.width,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                decoration: const InputDecoration(
-                  hintText: 'Search',
-                  border: InputBorder.none,
-                  icon: Icon(Icons.search, size: 25, color: Colors.black),
-                ),
-                onChanged: (value) {},
-              ),
-            ),
+          centerTitle: true,
+          title: const Text(
+            "Product detail page",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 33,
+                fontFamily: 'BebasNeue-Regular'),
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.shopping_cart,
-                  color: Colors.black), // Add to Cart icon
-              onPressed: () {
-                // Navigate to the CartScreen
-              },
+          backgroundColor: AppConstant.transparent,
+          elevation: 0,
+        ),
+        body: Container(
+            child: Column(
+          children: [
+            Obx(() {
+              return CarouselSlider(
+                items: _bannerController.bannerUrls
+                    .map(
+                      (imageUrls) => ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0).r,
+                        child: CachedNetworkImage(
+                          imageUrl: imageUrls,
+                          fit: BoxFit.cover,
+                          width: Get.width - 10.w,
+                          placeholder: (context, url) => const ColoredBox(
+                            color: Colors.white,
+                            child: Center(
+                              child: CupertinoActivityIndicator(),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                options: CarouselOptions(
+                  height: 400, // Set your desired height
+                  enableInfiniteScroll: true,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 2),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  pauseAutoPlayOnTouch: true,
+                  enlargeCenterPage: true,
+                  aspectRatio: 2.0,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      currentindex = index;
+                    });
+                  },
+                ),
+              );
+            }),
+            const SizedBox(
+              height: 13,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: _bannerController.bannerUrls
+                  .asMap()
+                  .entries
+                  .map(
+                    (entry) => GestureDetector(
+                      onTap: () => carouselController.animateToPage(entry.key),
+                      child: Container(
+                        width: currentindex == entry.key ? 17 : 7,
+                        height: 7.0,
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 3.0,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: currentindex == entry.key
+                              ? Colors.teal
+                              : Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           ],
-        ),
-        body: const SingleChildScrollView(
-            child: Column(children: [
-          SizedBox(
-            height: 10,
-          ),
-          Align(
-            alignment: Alignment(-0.99, 0),
-          ),
-          Align(
-            alignment: Alignment(-0.99, 0),
-            child: Padding(
-              padding: EdgeInsets.all(4.0),
-            ),
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 5,
-              ),
-              Icon(
-                Icons.star,
-                color: Colors.orangeAccent,
-              ),
-              Icon(
-                Icons.star,
-                color: Colors.orangeAccent,
-              ),
-              Icon(
-                Icons.star,
-                color: Colors.orangeAccent,
-              ),
-              Icon(
-                Icons.star_half,
-                color: Colors.orangeAccent,
-              ),
-              Icon(
-                Icons.star_border,
-                color: Colors.orangeAccent,
-              ),
-            ],
-          )
-        ])));
+        )),
+      ),
+    );
   }
 }

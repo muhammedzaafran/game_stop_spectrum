@@ -1,25 +1,91 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_kit/ecommerce_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:game_stop_spectrum/view/widget/custom_grid_item.dart';
-class CustomGrid extends StatefulWidget {
-  const CustomGrid({super.key});
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/Screens/product_details_page.dart';
+import 'package:game_stop_spectrum/view/product_details.dart';
+import 'package:get/get.dart';
+
+import '../../controller/get_product_data.dart';
+import '../../model/product_model.dart';
+
+class GetProductWidget extends StatefulWidget {
+  const GetProductWidget({super.key});
 
   @override
-  State<CustomGrid> createState() => _CustomGridState();
+  State<GetProductWidget> createState() => _GetProductWidgetState();
 }
 
-class _CustomGridState extends State<CustomGrid> {
+class _GetProductWidgetState extends State<GetProductWidget> {
+  final GetProductDataController _getProductDataController =
+      Get.put(GetProductDataController());
   @override
   Widget build(BuildContext context) {
-    return  GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
-      ),
-      itemCount: 5,
-      itemBuilder: (context, index) {
+    Size size = MediaQuery.of(context).size;
 
-        return const CustomGridItem(itemWidth: 100, itemHeight: 100);
+    return FutureBuilder<List<QueryDocumentSnapshot<Object?>>>(
+      future: _getProductDataController.getProductData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Return a loading indicator or placeholder widget
+          return SizedBox(
+              width: 20.w,
+              height: 20.h,
+              child: const Center(child: CircularProgressIndicator()));
+        } else if (snapshot.hasError) {
+          // Handle error
+          return Text('Error: ${snapshot.error}');
+        } else {
+          // Data has been loaded successfully
+          List<QueryDocumentSnapshot<Object?>> data = snapshot.data!;
+          int dataLength = data.length;
+
+          // Rest of your widget tree using the 'data'
+          return Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.width,
+                child: GridView.builder(
+                  // shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
+                    childAspectRatio: 0.80,
+                  ),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: dataLength,
+                  itemBuilder: (BuildContext context, int index) {
+                    final productData = data[index];
+                    ProductModel productModel = ProductModel(
+                      productId: productData['productId'],
+                      categoryId: productData['categoryId'],
+                      productName: productData['productName'],
+                      categoryName: productData['categoryName'],
+                      productDescription: productData['productDescription'],
+                      createdAt: productData['createdAt'],
+                      updatedAt: productData['updatedAt'],
+                      price: productData['price'],
+                      productImage: productData['productImage'],
+                      consoleType: productData['consoleType'],
+                    );
+                    return EcommerceElement.productCard(
+                      onTap: () {
+                        Get.to(() => const ProductDetailPage());
+                      },
+                      imageBoxFit: BoxFit.cover,
+                      image: productModel.productImage,
+                      title: "${productModel.productName}",
+                      price: "${productModel.price}",
+                      description: "${productModel.productDescription}",
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        }
       },
     );
   }

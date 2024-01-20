@@ -5,6 +5,8 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validateInput;
   final String? hintText;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final TextInputType? keyboardType;
   final EdgeInsetsGeometry? contentPadding;
   final bool obscureText;
   final TextEditingController? controller;
@@ -17,16 +19,21 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.hintText,
     this.prefixIcon,
+    this.keyboardType,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       validator: validateInput,
       controller: controller,
       obscureText: obscureText,
+
       cursorColor: AppConstant.appMainColor, // Set the cursor color here
       decoration: InputDecoration(
+        suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         hintStyle: const TextStyle(
           color: Color(0xFF616161),
@@ -41,8 +48,7 @@ class CustomTextField extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(10),
         ),
-        focusedBorder: const OutlineInputBorder(
-        ),
+        focusedBorder: const OutlineInputBorder(),
       ),
     );
   }

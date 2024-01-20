@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 3), () {
       logInCheck(context);
     });
   }
@@ -31,9 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> logInCheck(BuildContext context) async {
     if (user != null) {
       Get.offAll(() => const HomePage(),
-          transition: Transition.fade, duration: const Duration(seconds: 5));
+          transition: Transition.fade, duration: const Duration(seconds: 3));
     } else {
-      Get.to(() => const OnboardingScreen(), transition: Transition.fade);
+      Get.offAll(() => const OnboardingScreen(), transition: Transition.fade);
     }
   }
 

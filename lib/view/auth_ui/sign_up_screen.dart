@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../controller/email_sign_in_controller.dart';
 import '../../controller/google_sign_in_controller.dart';
+import '../../controller/password_visibility_controller.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
@@ -29,7 +30,8 @@ class _SignUpPageState extends State<SignUpPage> {
       Get.put(GoogleSignInController());
   final EmailPassController _emailPassController =
       Get.put(EmailPassController());
-
+  final PasswordVisibilityController _passwordVisibilityController =
+      Get.put(PasswordVisibilityController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -90,7 +92,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                       Validator.validateName(
                                         name: value,
                                       ),
-                                  prefixIcon: const Icon(Icons.account_circle, color: Colors.black,),
+                                  prefixIcon: const Icon(
+                                    Icons.account_circle,
+                                    color: Colors.black,
+                                  ),
                                   controller: _nameTextController,
                                   hintText: "Name",
                                   contentPadding: const EdgeInsets.symmetric(
@@ -103,7 +108,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Validator.validateEmail(
                                   email: value,
                                 ),
-                                prefixIcon: const Icon(Icons.email, color: Colors.black,),
+                                prefixIcon: const Icon(
+                                  Icons.email,
+                                  color: Colors.black,
+                                ),
                                 controller: _emailTextController,
                                 hintText: "Email",
                                 contentPadding: const EdgeInsets.symmetric(
@@ -112,17 +120,24 @@ class _SignUpPageState extends State<SignUpPage> {
                               const SizedBox(
                                 height: 15,
                               ),
-                              CustomTextField(
-                                validateInput: (value) =>
-                                    Validator.validatePassword(
-                                  password: value,
-                                ),
-                                prefixIcon: const Icon(Icons.lock, color: Colors.black),
-                                controller: _passwordTextController,
-                                hintText: "Password",
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 25.0, horizontal: 16.0),
-                              ),
+                              Obx(() => CustomTextField(
+                                    validateInput: (value) =>
+                                        Validator.validatePassword(
+                                      password: value,
+                                    ),
+                                    obscureText: _passwordVisibilityController.passwordVisible.value,
+                                    suffixIcon: IconButton(onPressed: () {
+                                      _passwordVisibilityController.updateVisibility();
+                                    }, icon:  Icon(_passwordVisibilityController.passwordVisible.value
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),color: Colors.black),
+                                    prefixIcon: const Icon(Icons.lock,
+                                        color: Colors.black),
+                                    controller: _passwordTextController,
+                                    hintText: "Password",
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 25.0, horizontal: 16.0),
+                                  )),
                               const SizedBox(
                                 height: 15,
                               ),
@@ -146,10 +161,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               Center(
                                 child: CustomTextBtn(
-                                  title: "Already have an account",
+                                  title: "Already have an account",foregroundColor: Colors.white,
                                   onPressed: () {
                                     Get.to(() => const SignInPage(),
-                                        transition: Transition.leftToRightWithFade);
+                                        transition:
+                                            Transition.leftToRightWithFade);
                                   },
                                   width: 10,
                                   height: 10,

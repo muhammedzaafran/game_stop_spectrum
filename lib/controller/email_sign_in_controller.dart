@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -42,20 +43,25 @@ class EmailPassController extends GetxController {
       } catch (error) {
         print('Error saving user data to Firestore: $error');
         Get.snackbar(
-          "Error",
+          "Error", colorText: Colors.white,
+          snackStyle: SnackStyle.GROUNDED,
           "$error",
           snackPosition: SnackPosition.BOTTOM,
         );
       }
-      Get.snackbar('Success', 'Registration Successful');
+      Get.snackbar('Success', 'Registration Successful',  colorText: Colors.white,
+        snackStyle: SnackStyle.GROUNDED,);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Get.snackbar('Error', 'Password Provided is too weak');
+        Get.snackbar('Error', 'Password Provided is too weak', colorText: Colors.white,
+            snackStyle: SnackStyle.GROUNDED, );
       } else if (e.code == 'email-already-in-use') {
-        Get.snackbar('Error', 'Email Provided already Exists');
+        Get.snackbar('Error', 'Email Provided already Exists', colorText: Colors.white,
+          snackStyle: SnackStyle.GROUNDED,);
       }
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      Get.snackbar('Error', colorText: Colors.white,
+          snackStyle: SnackStyle.GROUNDED, e.toString());
     }
   }
   Future<UserCredential?> signinUser(

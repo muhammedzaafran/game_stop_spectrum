@@ -8,6 +8,13 @@ class Validator {
       return 'Name can\'t be empty';
     }
 
+    // Check if the name contains numbers or special characters
+    RegExp nameRegExp =
+        RegExp(r'^[a-zA-Z ]+$'); // Only allow letters and spaces
+    if (!nameRegExp.hasMatch(name)) {
+      return 'Name must contain only letters and spaces';
+    }
+
     return null;
   }
 
@@ -37,6 +44,22 @@ class Validator {
       return 'Password can\'t be empty';
     } else if (password.length < 6) {
       return 'Enter a password with length at least 6';
+    }
+
+    return null;
+  }
+
+  static String? validatePhoneNumber({required String? phoneNumber}) {
+    if (phoneNumber == null) {
+      return null;
+    }
+
+    RegExp phoneNumberRegExp = RegExp(r"^[0-9]{10}$");
+
+    if (phoneNumber.isEmpty) {
+      return 'Phone number can\'t be empty';
+    } else if (!phoneNumberRegExp.hasMatch(phoneNumber)) {
+      return 'Enter a valid phone number with 10 digits';
     }
 
     return null;

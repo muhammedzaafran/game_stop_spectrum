@@ -5,6 +5,7 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import '../../controller/verify_phone_controller.dart';
+import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
 import '../widget/custom_buttons.dart';
 
@@ -84,6 +85,9 @@ class _VerifyOtpState extends State<VerifyOtp> {
                               foregroundColor: AppConstant.appMainColor,
                               title: "VERIFY OTP",
                               onPressed: () {
+                                validateInput: (value) =>
+                                    Validator.validatePhoneNumber(
+                                        phoneNumber: value);
                                 sentOtpController.verifyOtp(
                                     enteredOtp,
                                     widget.verificationId);
