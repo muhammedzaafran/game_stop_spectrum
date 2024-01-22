@@ -50,6 +50,7 @@ dependencies:
   flutter_advanced_drawer: ^1.3.5
   ecommerce_kit: ^0.0.2
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

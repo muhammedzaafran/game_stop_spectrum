@@ -71,7 +71,7 @@ class _GetProductWidgetState extends State<GetProductWidget> {
                     );
                     return EcommerceElement.productCard(
                       onTap: () {
-                        Get.to(() => const ProductDetails());
+                        Get.to(() => ProductDetailsScreen(productModel:productModel));
                       },
                       imageBoxFit: BoxFit.cover,
                       image:  productModel.productImage[0],
