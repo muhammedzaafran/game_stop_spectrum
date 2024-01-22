@@ -3,7 +3,6 @@ import 'package:ecommerce_kit/ecommerce_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/Screens/product_details_page.dart';
-import 'package:game_stop_spectrum/view/product_details.dart';
 import 'package:get/get.dart';
 
 import '../../controller/get_product_data.dart';
@@ -72,10 +71,10 @@ class _GetProductWidgetState extends State<GetProductWidget> {
                     );
                     return EcommerceElement.productCard(
                       onTap: () {
-                        Get.to(() => const ProductDetailPage());
+                        Get.to(() => const ProductDetails());
                       },
                       imageBoxFit: BoxFit.cover,
-                      image: productModel.productImage,
+                      image:  productModel.productImage[0],
                       title: "${productModel.productName}",
                       price: "${productModel.price}",
                       description: "${productModel.productDescription}",

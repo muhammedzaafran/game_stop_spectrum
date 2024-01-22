@@ -153,9 +153,12 @@ class _MainPageState extends State<HomePage> {
                     thickness: 1.5,
                     color: Colors.grey,
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
+                      onTap: () {
+                        Get.to(() => const HomePage());
+                      },
                       titleAlignment: ListTileTitleAlignment.center,
                       title: Text(
                         "Home",

@@ -4,7 +4,7 @@ class ProductModel {
   late final String productName;
   late final String categoryName;
   late final String price;
-  late final String productImage;
+  late final List productImage;
   late final String productDescription;
   late final dynamic createdAt;
   late final dynamic updatedAt;
