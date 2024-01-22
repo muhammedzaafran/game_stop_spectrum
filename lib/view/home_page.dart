@@ -301,6 +301,10 @@ class _MainPageState extends State<HomePage> {
           child: Scaffold(
             backgroundColor: AppConstant.black,
             appBar: AppBar(
+              leading: InkWell(
+                onTap: () => _advancedDrawerController..showDrawer(),
+                child: const Icon(Icons.menu),
+              ),
               centerTitle: true,
               title: const Text(
                 "GET YOUR GAMES HERE ",

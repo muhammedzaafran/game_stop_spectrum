@@ -1,5 +1,7 @@
+import 'package:blinking_text/blinking_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_kit/ecommerce_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   User? user = FirebaseAuth.instance.currentUser;
   int currentindex = 0;
+
   final CarouselController carouselController = CarouselController();
 
   @override
@@ -27,39 +30,59 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppConstant.black,
-        bottomNavigationBar: Container( // Wrap the bottomNavigationBar in a Container
-          padding: EdgeInsets.all(8.0),
+        bottomNavigationBar: Container(
+          // Wrap the bottomNavigationBar in a Container
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Add your WhatsApp share logic here
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.share),
-                    const SizedBox(width: 8),
-                    const Text("Share on WhatsApp"),
-                  ],
+              SizedBox(
+                width: 170,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Add your WhatsApp share logic here
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(Colors.white),
+                    overlayColor: MaterialStateProperty.all(Colors.teal),
+                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9))),
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.share, color: Color(0xFFFF0000)),
+                      SizedBox(width: 8),
+                      Text("Share on WhatsApp",
+                          style: TextStyle(color: Colors.black)),
+                    ],
+                  ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Add to cart logic here
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.shopping_cart),
-                    const SizedBox(width: 8),
-                    const Text("Add to Cart"),
-                  ],
+              SizedBox(
+                width: 170,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Add to cart logic here
+                  },
+                  style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.teal),
+                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9))),
+                      backgroundColor: MaterialStatePropertyAll(Colors.white)),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.shopping_cart, color: Color(0xFFFF0000)),
+                      SizedBox(width: 8),
+                      Text("Add to Cart",
+                          style: TextStyle(
+                            color: Colors.black,
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -68,7 +91,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "GET YOUR GAMES HERE ",
+            "P R O D U C T S ",
             style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 35),
           ),
           backgroundColor: AppConstant.transparent,
@@ -109,7 +132,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             ),
                           ),
                           errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                              const Icon(Icons.error),
                         ),
                       ),
                     );
@@ -119,7 +142,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     height: 450,
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 2),
-                    autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 400),
                     pauseAutoPlayOnTouch: true,
                     enlargeCenterPage: true,
                     aspectRatio: 2.5,
@@ -137,22 +161,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     widget.productModel.productImage.length,
-                        (index) => Container(
+                    (index) => Container(
                       width: currentindex == index ? 17 : 7,
                       height: 7.0,
                       margin: const EdgeInsets.symmetric(horizontal: 3.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: currentindex == index
-                            ? Colors.teal
-                            : Colors.white,
+                        color:
+                            currentindex == index ? Colors.teal : Colors.white,
                       ),
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     height: Get.height * 0.4,
                     child: Card(
                       elevation: 5.0,
@@ -163,9 +186,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           gradient: const LinearGradient(
-                            begin: Alignment.topLeft,
+                            begin: Alignment.topRight,
                             end: Alignment.bottomRight,
-                            colors: [Colors.blue, Colors.teal],
+                            colors: [Colors.teal, Colors.black],
                           ),
                         ),
                         child: Column(
@@ -176,17 +199,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 alignment: Alignment.topLeft,
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       widget.productModel.productName,
                                       style: TextStyle(
-                                        color: AppConstant.appMainColor,
-                                        fontSize: 18.sp,
-                                        fontFamily: 'Roboto-Bold',
+                                        color: Colors.white,
+                                        fontSize: 20.sp,
+                                        fontFamily: 'Anton-Regular',
                                       ),
                                     ),
-                                    const Icon(Icons.favorite_outline)
+                                    const Icon(
+                                      Icons.favorite_outline,
+                                      color: Colors.white,
+                                    )
                                   ],
                                 ),
                               ),
@@ -197,14 +223,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 alignment: Alignment.topLeft,
                                 child: Row(
                                   children: [
-                                    Text(
-                                      "Price : ₹ " + widget.productModel.price,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15.sp,
-                                        fontFamily: 'Roboto-Bold',
-                                      ),
-                                    )
+                                    BlinkText(
+                                        "Price : ₹ ${widget.productModel.price}",
+                                        style: const TextStyle(
+                                          fontFamily: 'Anton-Regular',
+                                            fontSize: 35.0,
+                                            color: Colors.white),
+                                        beginColor: Colors.black,
+                                        endColor: Colors.greenAccent,
+                                        times: 100,
+                                        duration: Duration(seconds: 1)),
                                   ],
                                 ),
                               ),
@@ -217,9 +245,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   "Category : " +
                                       widget.productModel.categoryName,
                                   style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 13.sp,
-                                    fontFamily: 'Roboto-Regular',
+                                    color: Colors.white,
+                                    fontSize: 18.sp,
+                                    fontFamily: 'BebasNeue-Regular',
                                   ),
                                 ),
                               ),
@@ -231,9 +259,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Text(
                                   widget.productModel.productDescription,
                                   style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 13.sp,
-                                    fontFamily: 'Roboto-Regular',
+                                    color: Colors.white,
+                                    fontSize: 14.sp,
+                                    fontFamily: 'Roboto-Bold',
                                   ),
                                 ),
                               ),
@@ -244,7 +272,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
               ],
             ),
           ),

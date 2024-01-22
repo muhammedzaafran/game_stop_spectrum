@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/category_product_controller.dart';
 import '../../model/category_model.dart';
+import '../Screens/single_category_products.dart';
 
 class CategoryWidget extends StatefulWidget {
   const CategoryWidget({super.key});
@@ -53,11 +54,11 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                 return Padding(
                   padding: const EdgeInsets.all(.0),
                   child: GestureDetector(
-                    // onTap: () => Get.to(
-                    //         () => AllSingleCategoryProductsScreen(
-                    //       categoryId: categoryModel.categoryId,
-                    //     ),
-                    //     transition: Transition.leftToRightWithFade),
+                    onTap: () => Get.to(
+                            () => SingleCategoryProducts(
+                          categoryId: categoryModel.categoryId,
+                        ),
+                        transition: Transition.leftToRightWithFade),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
