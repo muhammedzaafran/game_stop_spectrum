@@ -9,8 +9,8 @@ class CartModel {
   late final dynamic createdAt;
   late final dynamic updatedAt;
   late final String consoleType;
-  late final String productQuantity;
-  late final String productTotalPrice;
+  late final int productQuantity;
+  late final double productTotalPrice;
 
   CartModel({
     required this.productId,

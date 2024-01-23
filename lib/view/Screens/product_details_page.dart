@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/utils/app_constant.dart';
 import 'package:get/get.dart';
 
+import '../../controller/cart_controller.dart';
 import '../../model/product_model.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -24,6 +25,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int currentindex = 0;
 
   final CarouselController carouselController = CarouselController();
+
+  final CartController _CartController = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     // Add your WhatsApp share logic here
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.white),
+                    backgroundColor: const MaterialStatePropertyAll(Colors.white),
                     overlayColor: MaterialStateProperty.all(Colors.teal),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(9))),
@@ -63,14 +66,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SizedBox(
                 width: 170,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Add to cart logic here
+                  onPressed: () async {
+                    await _CartController.checkProductExistence(
+                        uId: user!.uid, productModel: widget.productModel);
                   },
                   style: ButtonStyle(
                       overlayColor: MaterialStateProperty.all(Colors.teal),
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(9))),
-                      backgroundColor: MaterialStatePropertyAll(Colors.white)),
+                      backgroundColor: const MaterialStatePropertyAll(Colors.white)),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -226,7 +230,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     BlinkText(
                                         "Price : ₹ ${widget.productModel.price}",
                                         style: const TextStyle(
-                                          fontFamily: 'Anton-Regular',
+                                            fontFamily: 'Anton-Regular',
                                             fontSize: 35.0,
                                             color: Colors.white),
                                         beginColor: Colors.black,
