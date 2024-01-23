@@ -92,6 +92,7 @@ class _SignInPageState extends State<SignInPage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               CustomTextField(
+                                  keyboardType: TextInputType.emailAddress,
                                   validateInput: (value) =>
                                       Validator.validateEmail(
                                         email: value,
@@ -108,6 +109,7 @@ class _SignInPageState extends State<SignInPage> {
                                 height: 15,
                               ),
                               Obx(() => CustomTextField(
+                                keyboardType: TextInputType.text,
                                     validateInput: (value) =>
                                         Validator.validatePassword(
                                       password: value,

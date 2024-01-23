@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_stop_spectrum/view/Screens/cart_page.dart';
 import 'package:game_stop_spectrum/view/Screens/profile_page.dart';
 import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
 import 'package:game_stop_spectrum/view/widget/banner_widget.dart';
@@ -301,9 +302,20 @@ class _MainPageState extends State<HomePage> {
           child: Scaffold(
             backgroundColor: AppConstant.black,
             appBar: AppBar(
+              actions:  [
+                InkWell(
+                  onTap: () {
+                    Get.to(const CartPage());
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 18),
+                    child: Icon(Icons.shopping_cart_outlined, color: Color(0xFFFF0000),size: 30),
+                  ),
+                )
+              ],
               leading: InkWell(
                 onTap: () => _advancedDrawerController..showDrawer(),
-                child: const Icon(Icons.menu),
+                child: const Icon(Icons.menu, color: Colors.teal, size: 30,),
               ),
               centerTitle: true,
               title: const Text(

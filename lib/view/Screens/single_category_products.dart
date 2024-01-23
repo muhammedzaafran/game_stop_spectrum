@@ -167,7 +167,7 @@ class _SingleCategoryProductsState extends State<SingleCategoryProducts> {
                                             const Color(0xFF000000),
                                             child: IconButton(
                                                 icon: const Icon(
-                                                    Icons.add_shopping_cart,
+                                                    Icons.shopping_cart_outlined,
                                                     color: Color(0xFFFF0000)),
                                                 onPressed: () async {}),
                                           ),
