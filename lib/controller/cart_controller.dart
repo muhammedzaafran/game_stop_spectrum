@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -29,8 +30,18 @@ class CartController extends GetxController {
         'productQuantity': updatedQuantity,
         'productTotalPrice': totalPrice
       });
-      Get.snackbar("product exists", "update quantity");
-      print("product exists");
+      Get.showSnackbar(
+        const GetSnackBar(
+          title: "Product Exists",
+          message: "Update Quantity",
+          backgroundColor: Colors.teal,
+          icon: Icon(
+            Icons.cancel_presentation_rounded,
+            color: Colors.black,
+          ),
+          duration: Duration(seconds: 3),
+        ),
+      );
     } else {
       await FirebaseFirestore.instance.collection('cart').doc(uId).set(
         {
@@ -57,7 +68,18 @@ class CartController extends GetxController {
       await documentReference.set(cartModel.toMap());
 
       print("product added");
-      Get.snackbar("Success", "product added");
+      Get.showSnackbar(
+        const GetSnackBar(
+          title: "Success",
+          message: 'Product Added',
+          backgroundColor: Colors.teal,
+          icon: Icon(
+            Icons.add,
+            color: Colors.black,
+          ),
+          duration: Duration(seconds: 3),
+        ),
+      );
     }
   }
 }

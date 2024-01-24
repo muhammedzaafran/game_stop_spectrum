@@ -117,7 +117,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     return Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [Colors.blue, Colors.teal],

@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: Get.width * 0.65,
                 width: Get.width * 0.7,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
                       Colors.teal, // Start color
                       Colors.black, // End color

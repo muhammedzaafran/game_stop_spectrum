@@ -107,7 +107,7 @@
 //                             );
 //
 //                             //calculate price
-//                             _productPriceController.fetchProductPrice();
+//                             // _productPriceController.fetchProductPrice();
 //                             return SwipeActionCell(
 //                               key: ObjectKey(cartModel.productId),
 //                               trailingActions: [

@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/Screens/product_details_page.dart';
@@ -119,9 +121,18 @@ class _SingleCategoryProductsState extends State<SingleCategoryProducts> {
                                   height: 150.h,
                                   child: Padding(
                                     padding: EdgeInsets.all(13.0.w),
-                                    child: Image.network(
-                                      productModel.productImage[0],
-                                      width: double.infinity,
+                                    child:  CachedNetworkImage(
+                                      imageUrl: productModel.productImage[0],
+                                      fit: BoxFit.cover,
+                                      width: Get.width - 10,
+                                      placeholder: (context, url) => const ColoredBox(
+                                        color: Colors.white,
+                                        child: Center(
+                                          child: CupertinoActivityIndicator(),
+                                        ),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
                                     ),
                                   ),
                                 ),
