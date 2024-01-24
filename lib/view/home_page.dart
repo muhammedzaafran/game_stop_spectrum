@@ -25,15 +25,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _MainPageState extends State<HomePage> {
-  // int _currentSelectedIndex = 0;
-  // var titles = ["Home", "Favorites", "Cart", "Settings"];
-  // final List<Widget> _pages = [
-  //   const HomePage(),
-  //   const Favorites(),
-  //   const CartScreen(),
-  //   const Settings1(),
-  // ];
-
   final _advancedDrawerController = AdvancedDrawerController();
   final GoogleSignInController googleSignInController =
       GoogleSignInController();
