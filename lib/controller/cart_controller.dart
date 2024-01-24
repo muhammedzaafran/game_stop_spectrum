@@ -33,13 +33,13 @@ class CartController extends GetxController {
       Get.showSnackbar(
         const GetSnackBar(
           title: "Product Exists",
-          message: "Update Quantity",
-          backgroundColor: Colors.teal,
+          message: "Updated Quantity",
+          backgroundColor: Colors.greenAccent,
           icon: Icon(
             Icons.cancel_presentation_rounded,
             color: Colors.black,
           ),
-          duration: Duration(seconds: 3),
+          duration: Duration(seconds: 2),
         ),
       );
     } else {
@@ -72,12 +72,12 @@ class CartController extends GetxController {
         const GetSnackBar(
           title: "Success",
           message: 'Product Added',
-          backgroundColor: Colors.teal,
+          backgroundColor: Colors.greenAccent,
           icon: Icon(
             Icons.add,
             color: Colors.black,
           ),
-          duration: Duration(seconds: 3),
+          duration: Duration(seconds: 2),
         ),
       );
     }

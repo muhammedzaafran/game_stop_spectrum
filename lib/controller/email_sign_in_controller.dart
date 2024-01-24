@@ -49,14 +49,14 @@ class EmailPassController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
         );
       }
-      Get.snackbar('Success', 'Registration Successful',  colorText: Colors.white,
+      Get.snackbar('Success', 'Registration Successful',  colorText: Colors.greenAccent,
         snackStyle: SnackStyle.GROUNDED,);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Get.snackbar('Error', 'Password Provided is too weak', colorText: Colors.white,
+        Get.snackbar('Error', 'Password Provided is too weak', colorText: Colors.greenAccent,
             snackStyle: SnackStyle.GROUNDED, );
       } else if (e.code == 'email-already-in-use') {
-        Get.snackbar('Error', 'Email Provided already Exists', colorText: Colors.white,
+        Get.snackbar('Error', 'Email Provided already Exists', colorText: Colors.greenAccent,
           snackStyle: SnackStyle.GROUNDED,);
       }
     } catch (e) {
@@ -95,7 +95,7 @@ class EmailPassController extends GetxController {
             transition: Transition.leftToRightWithFade);
       } else {
         // No user is signed in
-        Get.snackbar('No user is', 'currently authenticated');
+        Get.snackbar('No user is', 'currently authenticated',colorText: Colors.greenAccent);
       }
     } catch (e) {
       Get.snackbar('Error', e.toString());
@@ -109,6 +109,7 @@ class EmailPassController extends GetxController {
       Get.snackbar(
         "Request Sent Successfully",
         "Password reset link sent to $userEmail",
+        colorText: Colors.greenAccent,
         snackPosition: SnackPosition.TOP,
       );
       Get.off(const HomePage(),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -19,21 +20,21 @@ class SentOtpController extends GetxController {
           // This callback will be invoked in case of automatic verification
           // You may choose to sign in the user here
           await _auth.signInWithCredential(credential);
-          Get.snackbar("Success", "Automatic Verification Completed");
+          Get.snackbar("Success", "Automatic Verification Completed", colorText: Colors.greenAccent);
         },
         verificationFailed: (FirebaseAuthException e) {
           // Handle the verification failure
-          Get.snackbar("Error", "Verification Failed: ${e.message}");
+          Get.snackbar("Error", "Verification Failed: ${e.message}",colorText: Colors.greenAccent);
         },
         codeSent: (String verificationId, int? resendToken) {
           // This callback will be invoked when the code is successfully sent
           // Save the verification ID somewhere to use it later
-          Get.snackbar("Code Sent", "Code Sent to $phoneNumber");
+          Get.snackbar("Code Sent", "Code Sent to $phoneNumber",colorText: Colors.greenAccent);
           Get.to(() => VerifyOtp(verificationId: verificationId));
         },
         codeAutoRetrievalTimeout: (String verificationId) {
           // This callback will be invoked when the code auto-retrieval has timed out
-          Get.snackbar("Timeout", "Auto Retrieval Timeout: $verificationId");
+          Get.snackbar("Timeout", "Auto Retrieval Timeout: $verificationId",colorText: Colors.greenAccent);
         },
       );
     } catch (e) {
@@ -77,22 +78,23 @@ class SentOtpController extends GetxController {
         print('Error saving user data to Firestore: $error');
         Get.snackbar(
           "Error",
+          colorText: Colors.greenAccent,
           "$error",
           snackPosition: SnackPosition.BOTTOM,
         );
       }
 
-      Get.snackbar('Success', 'Registration Successful');
+      Get.snackbar('Success', 'Registration Successful',colorText: Colors.greenAccent);
 
       // Display success message
-      Get.snackbar("Success", "Verification Successful");
+      Get.snackbar("Success", "Verification Successful",colorText: Colors.greenAccent);
 
       // Navigate to the next screen or perform any other action
       // For example, you might want to navigate to a home screen
       Get.offAll(() => const HomePage());
     } catch (e) {
       // Handle exceptions
-      Get.snackbar("Error", "Verification Failed: $e");
+      Get.snackbar("Error", "Verification Failed: $e",colorText: Colors.greenAccent);
     }
   }
 }

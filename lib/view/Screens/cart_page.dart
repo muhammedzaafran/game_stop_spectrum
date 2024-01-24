@@ -47,14 +47,13 @@ class _CartPageState extends State<CartPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(18.0),
-              child: Text(
-                "Price",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Roboto-Bold',
-                    fontSize: 23),
+              child: Obx(
+                () => Text(
+                  " Total ₹ : ${_productPriceController.totalPrice.value.toStringAsFixed(1)} rs",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             Padding(

@@ -25,6 +25,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _MainPageState extends State<HomePage> {
+  // int _currentSelectedIndex = 0;
+  // var titles = ["Home", "Favorites", "Cart", "Settings"];
+  // final List<Widget> _pages = [
+  //   const HomePage(),
+  //   const Favorites(),
+  //   const CartScreen(),
+  //   const Settings1(),
+  // ];
 
   final _advancedDrawerController = AdvancedDrawerController();
   final GoogleSignInController googleSignInController =
@@ -327,16 +335,16 @@ class _MainPageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Trending",
+                        "Check out these",
                         style: TextStyle(
                             fontFamily: 'BebasNeue-Regular',
-                            fontSize: 30,
+                            fontSize: 28,
                             color: Colors.white),
                       ),
                     ),
                     BannerWidget(),
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Padding(
                       padding: EdgeInsets.all(8.0),
@@ -344,21 +352,21 @@ class _MainPageState extends State<HomePage> {
                         "Genres",
                         style: TextStyle(
                             fontFamily: 'BebasNeue-Regular',
-                            fontSize: 30,
+                            fontSize: 28,
                             color: Colors.white),
                       ),
                     ),
                     CategoryWidget(),
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "All Products",
+                        "COLLECTIONS",
                         style: TextStyle(
                             fontFamily: 'BebasNeue-Regular',
-                            fontSize: 30,
+                            fontSize: 28,
                             color: Colors.white),
                       ),
                     ),

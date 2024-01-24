@@ -39,19 +39,19 @@ class ProductCard extends StatelessWidget {
                   Container(
                     child: Text(
                       "${productModel.productName}",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.normal, fontSize: 25,fontFamily: 'BebasNeue-Regular'),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
                   ),
-                  SizedBox(height: 2),
+                  SizedBox(height: 17),
 
                   // Price
                   Container(
                     height: 20, // Set a fixed height
-                    child: Text("${productModel.price}"),
+                    child: Text("${productModel.price}",style: TextStyle(fontFamily: 'BebasNeue-Regular',fontSize: 25,fontWeight: FontWeight.bold)),
                   ),
-                  SizedBox(height: 2),
+                  SizedBox(height: 17),
 
                   // Description
                   Container(

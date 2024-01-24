@@ -81,7 +81,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 if (email.isEmpty) {
                                   Get.snackbar(
                                     "Error",
-                                    "Please enter all details", colorText: Colors.white,
+                                    "Please enter all details", colorText: Colors.greenAccent,
                                     snackStyle: SnackStyle.GROUNDED,
                                     snackPosition: SnackPosition.TOP,
                                   );

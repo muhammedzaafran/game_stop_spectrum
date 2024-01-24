@@ -1,7 +1,6 @@
 import 'package:blinking_text/blinking_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_kit/ecommerce_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +57,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Icon(Icons.share, color: Color(0xFFFF0000)),
                       SizedBox(width: 8),
                       Text("Share on WhatsApp",
-                          style: TextStyle(color: Colors.black)),
+                          style: TextStyle(color: Colors.black,fontFamily: 'Roboto-Bold')),
                     ],
                   ),
                 ),
@@ -83,6 +82,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       SizedBox(width: 8),
                       Text("Add to Cart",
                           style: TextStyle(
+                            fontFamily: 'Roboto-Bold',
                             color: Colors.black,
                           )),
                     ],
@@ -95,8 +95,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "P R O D U C T S ",
-            style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 35),
+            "PRODUCTS ",
+            style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 30),
           ),
           backgroundColor: AppConstant.transparent,
           elevation: 0,
