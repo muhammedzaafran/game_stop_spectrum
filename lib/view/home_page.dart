@@ -25,6 +25,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _MainPageState extends State<HomePage> {
+
   final _advancedDrawerController = AdvancedDrawerController();
   final GoogleSignInController googleSignInController =
       GoogleSignInController();
@@ -146,21 +147,21 @@ class _MainPageState extends State<HomePage> {
                     color: Colors.grey,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
                       onTap: () {
                         Get.to(() => const HomePage());
                       },
                       titleAlignment: ListTileTitleAlignment.center,
-                      title: const Text(
+                      title: Text(
                         "Home",
                         style: TextStyle(color: AppConstant.appTextColor),
                       ),
-                      leading: const Icon(
+                      leading: Icon(
                         Icons.home,
                         color: AppConstant.appTextColor,
                       ),
-                      trailing: const Icon(
+                      trailing: Icon(
                         Icons.arrow_forward,
                         color: AppConstant.appTextColor,
                       ),
