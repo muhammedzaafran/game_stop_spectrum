@@ -51,6 +51,7 @@ class CustomElevatedBtn extends StatelessWidget {
             style: TextStyle(
               color: textColor,
               fontSize: 15,
+              fontFamily: fontFamily,
               fontWeight: FontWeight.w600,
             ),
           ),

@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
               placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
                       maxLines: 2,
                     ),
                   ),
-                  SizedBox(height: 17),
+                  const SizedBox(height: 17),
 
                   // Price
                   Container(

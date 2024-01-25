@@ -48,13 +48,14 @@ class _GetProductWidgetState extends State<GetProductWidget> {
                 height: MediaQuery.of(context).size.width,
                 child: GridView.builder(
                   // shrinkWrap: true,
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 5.0,
-                    mainAxisSpacing: 5.0,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
                     childAspectRatio: 0.80,
                   ),
-                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: dataLength,
                   itemBuilder: (BuildContext context, int index) {
                     final productData = data[index];

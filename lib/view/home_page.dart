@@ -25,15 +25,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _MainPageState extends State<HomePage> {
-  // int _currentSelectedIndex = 0;
-  // var titles = ["Home", "Favorites", "Cart", "Settings"];
-  // final List<Widget> _pages = [
-  //   const HomePage(),
-  //   const Favorites(),
-  //   const CartScreen(),
-  //   const Settings1(),
-  // ];
-
   final _advancedDrawerController = AdvancedDrawerController();
   final GoogleSignInController googleSignInController =
       GoogleSignInController();
@@ -301,21 +292,27 @@ class _MainPageState extends State<HomePage> {
           ),
           child: Scaffold(
             backgroundColor: AppConstant.black,
+            resizeToAvoidBottomInset: true,
             appBar: AppBar(
-              actions:  [
+              actions: [
                 InkWell(
                   onTap: () {
                     Get.to(const CartPage());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(right: 18),
-                    child: Icon(Icons.shopping_cart_outlined, color: Color(0xFFFF0000),size: 30),
+                    child: Icon(Icons.shopping_cart_outlined,
+                        color: Color(0xFFFF0000), size: 30),
                   ),
                 )
               ],
               leading: InkWell(
                 onTap: () => _advancedDrawerController..showDrawer(),
-                child: const Icon(Icons.menu, color: Colors.teal, size: 30,),
+                child: const Icon(
+                  Icons.menu,
+                  color: Colors.teal,
+                  size: 30,
+                ),
               ),
               centerTitle: true,
               title: const Text(
@@ -327,8 +324,10 @@ class _MainPageState extends State<HomePage> {
             ),
             body: SingleChildScrollView(
               child: Container(
+                width: Get.width,
+                height: Get.height,
                 alignment: Alignment.center,
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

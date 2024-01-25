@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/auth_ui/splash_screen.dart';
+import 'package:game_stop_spectrum/view/widget/custom_bottom_sheet.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return  const ScreenUtilInit(
+    return const ScreenUtilInit(
         designSize:  Size(360, 800),
         minTextAdapt: true,
         splitScreenMode: true,

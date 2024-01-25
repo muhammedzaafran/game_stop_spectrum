@@ -32,8 +32,13 @@ class CartController extends GetxController {
       });
       Get.showSnackbar(
         const GetSnackBar(
-          title: "Product Exists",
-          message: "Updated Quantity",
+          messageText: Text("Updated Quantity", style: TextStyle(
+            color: Colors.black,fontFamily: 'Roboto-Bold'
+          ),),
+          titleText: Text(
+            "Product Exists",
+            style: TextStyle(color: Colors.black,fontFamily: 'Roboto-Bold'),
+          ),
           backgroundColor: Colors.greenAccent,
           icon: Icon(
             Icons.cancel_presentation_rounded,

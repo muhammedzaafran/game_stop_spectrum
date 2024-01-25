@@ -6,7 +6,11 @@ import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
 import '../../controller/cart-price-controller.dart';
 import '../../model/cart_model.dart';
+import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
+import '../widget/custom_bottom_sheet.dart';
+import '../widget/custom_buttons.dart';
+import '../widget/custom_textfield.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -16,9 +20,121 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  final _sendTextController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _nameTextController = TextEditingController();
+
   User? user = FirebaseAuth.instance.currentUser;
   final ProductPriceController _productPriceController =
       Get.put(ProductPriceController());
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+
+  void showCustomBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        height: Get.height * 0.8,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomLeft,
+            colors: [
+              Colors.teal,
+              Colors.black
+            ], // Change these colors as needed
+          ),
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(16.0),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 20.0),
+                  child: Container(
+                    height: 55.0,
+                    child: CustomTextField(
+                        keyboardType: TextInputType.name,
+                        validateInput: (value) => Validator.validateName(
+                              name: value,
+                            ),
+                        prefixIcon: const Icon(
+                          Icons.account_box_outlined,
+                          color: Colors.black,
+                        ),
+                        controller: _nameTextController,
+                        hintText: "Name",
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 25.0, horizontal: 16.0)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 20.0),
+                  child: SizedBox(
+                    height: 55.0,
+                    child: CustomTextField(
+                      keyboardType: TextInputType.number,
+                      validateInput: (value) =>
+                          Validator.validatePhoneNumber(phoneNumber: value),
+                      controller: _sendTextController,
+                      prefixIcon: const Icon(
+                        Icons.phone_android_sharp,
+                        color: Colors.black,
+                      ),
+                      hintText: "Phone",
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 20.0),
+                  child: Container(
+                    height: 55.0,
+                    child: CustomTextField(
+                        keyboardType: TextInputType.name,
+                        validateInput: (value) => Validator.validateName(
+                              name: value,
+                            ),
+                        prefixIcon: const Icon(
+                          Icons.place_outlined,
+                          color: Colors.black,
+                        ),
+                        controller: _nameTextController,
+                        hintText: "Address",
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 25.0, horizontal: 16.0)),
+                  ),
+                ),
+                CustomElevatedBtn(
+                  height: 40,
+                  backgroundColor: AppConstant.appMainColor,
+                  foregroundColor: AppConstant.appBtnColor,
+                  title: "Place Order",
+                  fontFamily: 'Roboto-Bold',
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                  textColor: Colors.white,
+                  width: Get.width * 0.30,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.transparent,
+      isDismissible: true,
+      enableDrag: true,
+      elevation: 6,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,10 +143,10 @@ class _CartPageState extends State<CartPage> {
       backgroundColor: AppConstant.black,
       appBar: AppBar(
         title: const Text(
-          "C A R T",
+          "CART",
           style: TextStyle(
               fontFamily: 'BebasNeue-Regular',
-              fontSize: 30,
+              fontSize: 35,
               color: Colors.white),
         ),
         centerTitle: true,
@@ -48,11 +164,11 @@ class _CartPageState extends State<CartPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.all(18.0),
+              padding: const EdgeInsets.all(18.0),
               child: Obx(
                 () => Text(
                   " Total ₹ : ${_productPriceController.totalPrice.value.toStringAsFixed(1)} rs",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -60,7 +176,7 @@ class _CartPageState extends State<CartPage> {
               padding: const EdgeInsets.all(18.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Add your WhatsApp share logic here
+                  showCustomBottomSheet();
                 },
                 style: ButtonStyle(
                   backgroundColor: const MaterialStatePropertyAll(Colors.black),
@@ -98,7 +214,7 @@ class _CartPageState extends State<CartPage> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
-                    return Center(
+                    return const Center(
                       child: Text("Error"),
                     );
                   }
@@ -112,7 +228,7 @@ class _CartPageState extends State<CartPage> {
                   }
 
                   if (snapshot.data!.docs.isEmpty) {
-                    return Center(
+                    return const Center(
                       child: Text("No products found!"),
                     );
                   }
