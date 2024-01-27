@@ -9,6 +9,7 @@ import 'package:game_stop_spectrum/utils/app_constant.dart';
 import 'package:get/get.dart';
 
 import '../../controller/cart_controller.dart';
+import '../../controller/whatsapp_controller.dart';
 import '../../model/product_model.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -26,6 +27,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final CarouselController carouselController = CarouselController();
 
   final CartController _CartController = Get.put(CartController());
+  final GetWhatsappMsg _getWhatsappMsg = Get.put(GetWhatsappMsg());
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 width: 170,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add your WhatsApp share logic here
+                    _getWhatsappMsg.sendMessageOnWhatsApp(productModel: widget.productModel);
                   },
                   style: ButtonStyle(
                     backgroundColor: const MaterialStatePropertyAll(Colors.white),

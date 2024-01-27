@@ -49,7 +49,7 @@ class ProductCard extends StatelessWidget {
                   // Price
                   Container(
                     height: 20, // Set a fixed height
-                    child: Text("${productModel.price}",style: TextStyle(fontFamily: 'BebasNeue-Regular',fontSize: 25,fontWeight: FontWeight.bold)),
+                    child: Text("₹${productModel.price}",style: TextStyle(fontFamily: 'BebasNeue-Regular',fontSize: 25,fontWeight: FontWeight.bold)),
                   ),
                   SizedBox(height: 17),
 

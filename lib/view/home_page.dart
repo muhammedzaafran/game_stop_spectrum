@@ -14,7 +14,9 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../controller/get_user_data_controller.dart';
 import '../controller/google_sign_in_controller.dart';
+import '../services/contacts/contact-us.dart';
 import '../utils/app_constant.dart';
+
 import 'home_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -152,39 +154,42 @@ class _MainPageState extends State<HomePage> {
                         Get.to(() => const HomePage());
                       },
                       titleAlignment: ListTileTitleAlignment.center,
-                      title: Text(
+                      title: const Text(
                         "Home",
                         style: TextStyle(color: AppConstant.appTextColor),
                       ),
-                      leading: Icon(
-                        Icons.home,
-                        color: AppConstant.appTextColor,
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward,
-                        color: AppConstant.appTextColor,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: ListTile(
-                      titleAlignment: ListTileTitleAlignment.center,
-                      title: const Text(
-                        "Products",
-                        style: TextStyle(color: AppConstant.appTextColor),
-                      ),
                       leading: const Icon(
-                        Icons.production_quantity_limits,
+                        Icons.home,
                         color: AppConstant.appTextColor,
                       ),
                       trailing: const Icon(
                         Icons.arrow_forward,
                         color: AppConstant.appTextColor,
                       ),
-                      onTap: () {},
+                    ),
+                  ),   Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      onTap: () {
+                        Get.to(() => const ProfilePage());
+
+                      },
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: const Text(
+                        "Profile",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: const Icon(
+                        Icons.account_circle,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
                     ),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
@@ -206,46 +211,29 @@ class _MainPageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: ListTile(
-                      titleAlignment: ListTileTitleAlignment.center,
-                      title: Text(
-                        "Contact",
-                        style: TextStyle(color: AppConstant.appTextColor),
-                      ),
-                      leading: Icon(
-                        Icons.help,
-                        color: AppConstant.appTextColor,
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward,
-                        color: AppConstant.appTextColor,
-                      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: ListTile(
+                    onTap: () {
+                      ContactUsDialog.showContactUsDialog(context);
+                    },
+                    titleAlignment: ListTileTitleAlignment.center,
+                    title: const Text(
+                      "Contact",
+                      style: TextStyle(color: AppConstant.appTextColor),
+                    ),
+                    leading: Icon(
+                      Icons.help,
+                      color: AppConstant.appTextColor,
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward,
+                      color: AppConstant.appTextColor,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: ListTile(
-                      onTap: () {
-                        Get.to(() => const ProfilePage());
-                      },
-                      titleAlignment: ListTileTitleAlignment.center,
-                      title: const Text(
-                        "Profile",
-                        style: TextStyle(color: AppConstant.appTextColor),
-                      ),
-                      leading: const Icon(
-                        Icons.account_circle,
-                        color: AppConstant.appTextColor,
-                      ),
-                      trailing: const Icon(
-                        Icons.arrow_forward,
-                        color: AppConstant.appTextColor,
-                      ),
-                    ),
-                  ),
-                  Padding(
+                ),
+
+                Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
                       onTap: () async {
@@ -327,7 +315,7 @@ class _MainPageState extends State<HomePage> {
                 width: Get.width,
                 height: Get.height,
                 alignment: Alignment.center,
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

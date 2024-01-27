@@ -64,4 +64,19 @@ class Validator {
 
     return null;
   }
+  static String? validateAddress({required String? address}) {
+    if (address == null) {
+      return null;
+    }
+
+    RegExp addressRegExp = RegExp(r'^[a-zA-Z0-9 .,-]+$');
+
+    if (address.isEmpty) {
+      return 'Address can\'t be empty';
+    } else if (!addressRegExp.hasMatch(address)) {
+      return 'Enter a valid address';
+    }
+
+    return null;
+  }
 }

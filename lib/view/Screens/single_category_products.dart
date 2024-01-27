@@ -121,18 +121,19 @@ class _SingleCategoryProductsState extends State<SingleCategoryProducts> {
                                   height: 150.h,
                                   child: Padding(
                                     padding: EdgeInsets.all(13.0.w),
-                                    child:  CachedNetworkImage(
+                                    child: CachedNetworkImage(
                                       imageUrl: productModel.productImage[0],
                                       fit: BoxFit.cover,
                                       width: Get.width - 10,
-                                      placeholder: (context, url) => const ColoredBox(
+                                      placeholder: (context, url) =>
+                                          const ColoredBox(
                                         color: Colors.white,
                                         child: Center(
                                           child: CupertinoActivityIndicator(),
                                         ),
                                       ),
                                       errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
+                                          const Icon(Icons.error),
                                     ),
                                   ),
                                 ),
@@ -166,21 +167,6 @@ class _SingleCategoryProductsState extends State<SingleCategoryProducts> {
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 30.w,
-                                    ),
-                                    Flexible(
-                                      child: CircleAvatar(
-                                        radius: 20.0,
-                                        backgroundColor:
-                                            const Color(0xFF000000),
-                                        child: IconButton(
-                                            icon: const Icon(
-                                                Icons.shopping_cart_outlined,
-                                                color: Color(0xFFFF0000)),
-                                            onPressed: () async {}),
-                                      ),
-                                    )
                                   ],
                                 ),
                               ),
