@@ -216,10 +216,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         fontFamily: 'Anton-Regular',
                                       ),
                                     ),
-                                    const Icon(
-                                      Icons.favorite_outline,
-                                      color: Colors.white,
-                                    )
                                   ],
                                 ),
                               ),

@@ -4,6 +4,8 @@ import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import '../../services/validator/validator.dart';
 
 class CustomBottomSheet extends StatefulWidget {
+  const CustomBottomSheet({super.key});
+
   @override
   _CustomBottomSheetState createState() => _CustomBottomSheetState();
 }
@@ -32,7 +34,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Please enter your address',
                 style: TextStyle(fontFamily: 'Anton-Regular', fontSize: 25),
               ),

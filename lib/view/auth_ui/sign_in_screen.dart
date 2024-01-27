@@ -123,8 +123,8 @@ class _SignInPageState extends State<SignInPage> {
                                         },
                                         icon: Icon(_passwordVisibilityController
                                                 .passwordVisible.value
-                                            ? Icons.visibility
-                                            : Icons.visibility_off),color: Colors.black),
+                                            ? Icons.visibility_off
+                                            : Icons.visibility),color: Colors.black),
                                     prefixIcon: const Icon(Icons.lock,
                                         color: Colors.black),
                                     controller: _passwordTextController,

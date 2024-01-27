@@ -4,7 +4,6 @@ import 'package:game_stop_spectrum/view/auth_ui/sentotp.dart';
 import 'package:game_stop_spectrum/view/auth_ui/sign_in_screen.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
-
 import '../../controller/email_sign_in_controller.dart';
 import '../../controller/google_sign_in_controller.dart';
 import '../../controller/password_visibility_controller.dart';
@@ -32,6 +31,7 @@ class _SignUpPageState extends State<SignUpPage> {
       Get.put(EmailPassController());
   final PasswordVisibilityController _passwordVisibilityController =
       Get.put(PasswordVisibilityController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -123,17 +123,23 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: 15,
                               ),
                               Obx(() => CustomTextField(
-                                keyboardType: TextInputType.text,
+                                    keyboardType: TextInputType.text,
                                     validateInput: (value) =>
                                         Validator.validatePassword(
                                       password: value,
                                     ),
-                                    obscureText: _passwordVisibilityController.passwordVisible.value,
-                                    suffixIcon: IconButton(onPressed: () {
-                                      _passwordVisibilityController.updateVisibility();
-                                    }, icon:  Icon(_passwordVisibilityController.passwordVisible.value
-                                        ? Icons.visibility
-                                        : Icons.visibility_off),color: Colors.black),
+                                    obscureText: _passwordVisibilityController
+                                        .passwordVisible.value,
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          _passwordVisibilityController
+                                              .updateVisibility();
+                                        },
+                                        icon: Icon(_passwordVisibilityController
+                                                .passwordVisible.value
+                                            ? Icons.visibility_off
+                                            : Icons.visibility),
+                                        color: Colors.black),
                                     prefixIcon: const Icon(Icons.lock,
                                         color: Colors.black),
                                     controller: _passwordTextController,
@@ -164,7 +170,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               Center(
                                 child: CustomTextBtn(
-                                  title: "Already have an account",foregroundColor: Colors.white,
+                                  title: "Already have an account",
+                                  foregroundColor: Colors.white,
                                   onPressed: () {
                                     Get.to(() => const SignInPage(),
                                         transition:

@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
 
-import '../services/random_id_generator/genrate-order-id-service.dart';
+import '../services/random_id_generator/generate_order_id_service.dart';
 
 class PlaceOrderController extends GetxController {
   void placeOrder({

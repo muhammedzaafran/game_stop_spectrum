@@ -17,6 +17,7 @@ import '../controller/google_sign_in_controller.dart';
 import '../services/contacts/contact-us.dart';
 import '../utils/app_constant.dart';
 
+import 'Screens/orders_screen.dart';
 import 'home_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -148,7 +149,7 @@ class _MainPageState extends State<HomePage> {
                     color: Colors.grey,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
                       onTap: () {
                         Get.to(() => const HomePage());
@@ -207,7 +208,7 @@ class _MainPageState extends State<HomePage> {
                         color: AppConstant.appTextColor,
                       ),
                       onTap: () {
-                        // Get.off(() => OrdersPage());
+                        Get.to(() => const OrderScreen());
                       },
                     ),
                   ),
@@ -222,11 +223,11 @@ class _MainPageState extends State<HomePage> {
                       "Contact",
                       style: TextStyle(color: AppConstant.appTextColor),
                     ),
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.help,
                       color: AppConstant.appTextColor,
                     ),
-                    trailing: Icon(
+                    trailing: const Icon(
                       Icons.arrow_forward,
                       color: AppConstant.appTextColor,
                     ),

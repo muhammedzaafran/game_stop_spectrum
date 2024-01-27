@@ -140,7 +140,7 @@ class _SingleCategoryProductsState extends State<SingleCategoryProducts> {
                               ),
                               Flexible(
                                 child: Text(
-                                  "${productModel.productName}",
+                                  productModel.productName,
                                   style: TextStyle(
                                       color: const Color(0xFF505050),
                                       fontFamily: 'Poppins',
