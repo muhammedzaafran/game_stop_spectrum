@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:game_stop_spectrum/view/auth_ui/onboarding_screen.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -112,7 +113,7 @@ class EmailPassController extends GetxController {
         colorText: Colors.greenAccent,
         snackPosition: SnackPosition.TOP,
       );
-      Get.off(const HomePage(),
+      Get.off(const OnboardingScreen(),
           transition: Transition.leftToRightWithFade);
     } on FirebaseAuthException catch (e) {
       Get.snackbar(

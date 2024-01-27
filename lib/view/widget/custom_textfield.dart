@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/utils/app_constant.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -46,7 +47,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hintText,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         focusedBorder: const OutlineInputBorder(),
       ),

@@ -58,6 +58,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           width: Get.width * 0.85,
                           height: 90,
                           child: CustomTextField(
+                            controller: _emailTextController,
                             keyboardType: TextInputType.emailAddress,
                             validateInput: (value) => Validator.validateEmail(
                               email: value,
@@ -78,12 +79,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 String email = _emailTextController.text.trim();
+                                print(email);
                                 if (email.isEmpty) {
                                   Get.snackbar(
                                     "Error",
-                                    "Please enter all details", colorText: Colors.greenAccent,
-                                    snackStyle: SnackStyle.GROUNDED,
-                                    snackPosition: SnackPosition.TOP,
+                                    "Please enter all details",
+                                    snackPosition: SnackPosition.BOTTOM,
                                   );
                                 } else {
                                   _emailPassController.forgotPassword(email);

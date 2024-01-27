@@ -42,10 +42,10 @@ class _UpiScreenState extends State<UpiScreen> {
     double amount = double.parse(widget.totalAmount);
     return _upiIndia.startTransaction(
       app: app,
-      receiverUpiId: "vineeth.venu.mini@okicici",
-      receiverName: 'Vineeth Venu',
+      receiverUpiId: "zaafranmuhammed@okaxis",
+      receiverName: 'Muhammed Zaafran',
       transactionRefId: 'TestingUpiIndiaPlugin',
-      transactionNote: 'Not actual. Just an example.',
+      transactionNote: 'Send money now or else...',
       amount: amount,
     );
   }
