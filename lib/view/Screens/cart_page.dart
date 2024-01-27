@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
 import '../../controller/cart-price-controller.dart';
+import '../../controller/place_order_controller.dart';
 import '../../model/cart_model.dart';
 import '../../services/validator/validator.dart';
 import '../../utils/app_constant.dart';
@@ -26,6 +27,8 @@ class _CartPageState extends State<CartPage> {
   User? user = FirebaseAuth.instance.currentUser;
   final ProductPriceController _productPriceController =
       Get.put(ProductPriceController());
+  final PlaceOrderController _placeOrderController =
+      Get.put(PlaceOrderController());
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -98,7 +101,7 @@ class _CartPageState extends State<CartPage> {
                     child: CustomTextField(
                         keyboardType: TextInputType.name,
                         validateInput: (value) => Validator.validateAddress(
-                               address: value,
+                              address: value,
                             ),
                         prefixIcon: const Icon(
                           Icons.place_outlined,
@@ -118,7 +121,18 @@ class _CartPageState extends State<CartPage> {
                   fontFamily: 'Roboto-Bold',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                     
+                      if (nameController.text != '' &&
+                          phoneController.text != '' &&
+                          addressController.text != '') {
+                        String name = nameController.text.trim();
+                        String phone = phoneController.text.trim();
+                        String address = addressController.text.trim();
+                        _placeOrderController.placeOrder(
+                            context: context,
+                            customerName: name,
+                            customerPhone: phone,
+                            customerAddress: address);
+                      }
                     }
                   },
                   textColor: Colors.white,
@@ -135,6 +149,7 @@ class _CartPageState extends State<CartPage> {
       elevation: 6,
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -165,8 +180,8 @@ class _CartPageState extends State<CartPage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(18.0),
-              child:  Obx(
-                    () => Text(
+              child: Obx(
+                () => Text(
                   " Total ₹ : ${_productPriceController.totalPrice.value.toStringAsFixed(1)} rs",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -247,8 +262,7 @@ class _CartPageState extends State<CartPage> {
                           categoryName: productData['categoryName'],
                           price: productData['price'],
                           productImage: productData['productImage'],
-                          productDescription:
-                              productData['productDescription'],
+                          productDescription: productData['productDescription'],
                           createdAt: productData['createdAt'],
                           updatedAt: productData['updatedAt'],
                           productQuantity: productData['productQuantity'],
@@ -305,11 +319,9 @@ class _CartPageState extends State<CartPage> {
                                                 .doc(cartModel.productId)
                                                 .update({
                                               'productQuantity':
-                                                  cartModel.productQuantity -
-                                                      1,
+                                                  cartModel.productQuantity - 1,
                                               'productTotalPrice': (double
-                                                      .parse(
-                                                          cartModel.price) *
+                                                      .parse(cartModel.price) *
                                                   (cartModel.productQuantity -
                                                       1))
                                             });
@@ -335,11 +347,9 @@ class _CartPageState extends State<CartPage> {
                                                 .doc(cartModel.productId)
                                                 .update({
                                               'productQuantity':
-                                                  cartModel.productQuantity +
-                                                      1,
-                                              'productTotalPrice': double
-                                                      .parse(
-                                                          cartModel.price) +
+                                                  cartModel.productQuantity + 1,
+                                              'productTotalPrice': double.parse(
+                                                      cartModel.price) +
                                                   double.parse(
                                                           cartModel.price) *
                                                       (cartModel

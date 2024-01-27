@@ -54,6 +54,7 @@ dependencies:
   upi_india: ^3.0.1
   url_launcher: ^6.2.4
   contactus: ^1.2.3
+  flutter_easyloading: ^3.0.5
 
 
 

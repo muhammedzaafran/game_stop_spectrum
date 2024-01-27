@@ -11,6 +11,7 @@ class OrderModel {
   late final String consoleType;
   late final int productQuantity;
   late final double productTotalPrice;
+  late final String customerId;  // Added field
   late final String customerName;
   late final String customerPhone;
   late final String customerAddress;
@@ -28,6 +29,7 @@ class OrderModel {
     required this.consoleType,
     required this.productQuantity,
     required this.productTotalPrice,
+    required this.customerId,  // Added parameter
     required this.customerName,
     required this.customerPhone,
     required this.customerAddress,
@@ -47,6 +49,7 @@ class OrderModel {
       'consoleType': consoleType,
       'productQuantity': productQuantity,
       'productTotalPrice': productTotalPrice,
+      'customerId': customerId,  // Added field
       'customerName': customerName,
       'customerPhone': customerPhone,
       'customerAddress': customerAddress,
@@ -67,6 +70,7 @@ class OrderModel {
       consoleType: json['consoleType'],
       productQuantity: json['productQuantity'],
       productTotalPrice: json['productTotalPrice'],
+      customerId: json['customerId'],  // Added field
       customerName: json['customerName'],
       customerPhone: json['customerPhone'],
       customerAddress: json['customerAddress'],
