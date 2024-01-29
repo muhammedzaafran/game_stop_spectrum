@@ -81,13 +81,13 @@ class _SignInPageState extends State<SignInPage> {
                   Container(
                     alignment: Alignment.center,
                     child: SizedBox(
-                      width: 357.w,
+                      width: Get.width*0.85.w,
                       height: 369.h,
                       child: Form(
                         key: _formKey,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               CustomTextField(
                                   keyboardType: TextInputType.emailAddress,
@@ -102,7 +102,7 @@ class _SignInPageState extends State<SignInPage> {
                                   controller: _emailTextController,
                                   hintText: "Email",
                                   contentPadding: EdgeInsets.symmetric(
-                                      vertical: 25.0.h, horizontal: 16.0.w)),
+                                      vertical: 15.0.h, horizontal: 12.0.w)),
                               SizedBox(
                                 height: 15.h,
                               ),
@@ -128,16 +128,19 @@ class _SignInPageState extends State<SignInPage> {
                                     controller: _passwordTextController,
                                     hintText: "Password",
                                     contentPadding: EdgeInsets.symmetric(
-                                        vertical: 25.0.h, horizontal: 16.0.w),
+                                        vertical: 15.0.h, horizontal: 12.0.w),
                                   )),
-                              CustomTextBtn(
-                                title: "Forgot password?",
-                                foregroundColor: Colors.white,
-                                onPressed: () {
-                                  Get.to(() => const ForgotPasswordPage());
-                                },
-                                width: 10.w,
-                                height: 10.h,
+                              Container(
+                                alignment: Alignment.topRight,
+                                child: CustomTextBtn(
+                                  title: "Forgot password?",
+                                  foregroundColor: Colors.white,
+                                  onPressed: () {
+                                    Get.to(() => const ForgotPasswordPage());
+                                  },
+                                  width: 10.w,
+                                  height: 10.h,
+                                ),
                               ),
                               CustomElevatedBtn(
                                 height: 40.h,
@@ -163,7 +166,7 @@ class _SignInPageState extends State<SignInPage> {
                                   }
                                 },
                                 textColor: Colors.white,
-                                width: 357.w,
+                                width: Get.width*0.85.w,
                               ),
                               Center(
                                 child: CustomTextBtn(

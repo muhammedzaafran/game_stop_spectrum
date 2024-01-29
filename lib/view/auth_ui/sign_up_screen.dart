@@ -45,8 +45,8 @@ class _SignUpPageState extends State<SignUpPage> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
-              width: Get.width.w,
-              height: Get.height.h,
+              width: ScreenUtil().screenWidth,
+              height: ScreenUtil().screenHeight,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   Container(
                     alignment: Alignment.center,
                     child: SizedBox(
-                      width: 357.w,
+                      width: Get.width * 0.85.w,
                       height: 460.h,
                       child: Form(
                         key: _formKey,
@@ -100,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   controller: _nameTextController,
                                   hintText: "Name",
                                   contentPadding: EdgeInsets.symmetric(
-                                      vertical: 25.0.h, horizontal: 16.0.w)),
+                                      vertical: 15.0.h, horizontal: 12.0.w)),
                               SizedBox(
                                 height: 15.h,
                               ),
@@ -117,9 +117,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                 controller: _emailTextController,
                                 hintText: "Email",
                                 contentPadding: EdgeInsets.symmetric(
-                                    vertical: 25.0.h, horizontal: 16.0.w),
+                                    vertical: 15.0.h, horizontal: 12.0.w),
                               ),
-                               SizedBox(
+                              SizedBox(
                                 height: 15.h,
                               ),
                               Obx(() => CustomTextField(
@@ -144,14 +144,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                         color: Colors.black),
                                     controller: _passwordTextController,
                                     hintText: "Password",
-                                    contentPadding:  EdgeInsets.symmetric(
-                                        vertical: 25.0.h, horizontal: 16.0.w),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 15.0.h, horizontal: 12.0.w),
                                   )),
                               SizedBox(
                                 height: 15.h,
                               ),
                               CustomElevatedBtn(
-                                height: 60.h,
+                                height: 40.h,
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign Up",
@@ -166,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   }
                                 },
                                 textColor: Colors.white,
-                                width: 357.w,
+                                width: Get.width * 0.85.w,
                               ),
                               Center(
                                 child: CustomTextBtn(
@@ -181,7 +181,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   height: 10.h,
                                 ),
                               ),
-                          SizedBox(
+                              SizedBox(
                                 height: 15.h,
                               ),
                             ]),
