@@ -28,14 +28,17 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
         backgroundColor: AppConstant.black,
         appBar: AppBar(
           title:  Text("VERIFY YOUR EMAIL ADDRESS",
-              style: TextStyle(fontSize: 35.sp, fontFamily: 'BebasNeue-Regular')),
+              style: TextStyle(fontSize: 26.sp, fontFamily: 'BebasNeue-Regular')),
           centerTitle: true,
           backgroundColor: AppConstant.transparent,
           elevation: 0,
         ),
         body: Container(
           alignment: Alignment.center,
+          width: ScreenUtil().screenWidth,
+          height: ScreenUtil().screenHeight,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Lottie.asset('asset/json/verify.json',
@@ -51,14 +54,14 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0.w),
                         child: Text(
                           "Name :  ${widget.user.displayName}",
                           style:  TextStyle(color: Colors.white, fontSize: 20.sp),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:  EdgeInsets.all(8.0.w),
                         child: Text(
                           "Email : ${widget.user.email}",
                           style: TextStyle(color: Colors.white, fontSize: 20.sp),
