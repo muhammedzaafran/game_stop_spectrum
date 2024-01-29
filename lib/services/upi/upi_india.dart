@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:upi_india/upi_india.dart';
 import '../../controller/place_order_controller.dart';
@@ -76,8 +77,8 @@ class _UpiScreenState extends State<UpiScreen> {
                   setState(() {});
                 },
                 child: SizedBox(
-                  height: 200,
-                  width: 100,
+                  height: 200.h,
+                  width: 100.w,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,

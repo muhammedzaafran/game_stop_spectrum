@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCarouselSlider extends StatelessWidget {
   final List<Widget> items;
@@ -11,7 +12,7 @@ class CustomCarouselSlider extends StatelessWidget {
     return CarouselSlider(
       items: items,
       options: CarouselOptions(
-        height: 200.0,
+        height: 200.0.h,
         // Adjust the height as needed
         enlargeCenterPage: true,
         autoPlay: true,

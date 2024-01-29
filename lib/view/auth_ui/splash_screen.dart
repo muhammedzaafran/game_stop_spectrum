@@ -48,8 +48,8 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
       body: Container(
         alignment: Alignment.center,
-        width: Get.width.w,
-        height: Get.height.h,
+        width: ScreenUtil().screenWidth,
+        height: ScreenUtil().screenHeight,
         decoration: const BoxDecoration(color: AppConstant.black),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -68,8 +68,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Lottie.asset('asset/json/loading_animation.json',
-                          width: 100,
-                          height: 100,
+                          width: 60.w,
+                          height: 60.h,
                           animate: true,
                           fit: BoxFit.cover,
                           repeat: true),

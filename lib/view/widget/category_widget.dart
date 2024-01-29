@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controller/category_product_controller.dart';
 import '../../model/category_model.dart';
@@ -25,10 +26,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
       future: _categoryDataController.getCategoryData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const SizedBox(
-            width: 20,
-            height: 20,
-            child: Center(child: CupertinoActivityIndicator()),
+          return SizedBox(
+            width: 20.w,
+            height: 20.h,
+            child: const Center(child: CupertinoActivityIndicator()),
           );
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
@@ -36,8 +37,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           List<QueryDocumentSnapshot<Object?>> data = snapshot.data!;
           int dataLength = data.length;
           return SizedBox(
-            height: 110,
-            width: size.width,
+            height: 110.h,
+            width: size.width.w,
             child: ListView.builder(
               itemCount: dataLength,
               shrinkWrap: true,
@@ -69,8 +70,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                             child: Column(
                               children: [
                                 Container(
-                                  width: 80,
-                                  height: 80,
+                                  width: 80.w,
+                                  height: 80.h,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     boxShadow: [
@@ -114,12 +115,12 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                         ),
                                       ]),
                                 ),
-                                const SizedBox(height: 5),
+                                 SizedBox(height: 5.h),
                                 Text(
                                   categoryModel.categoryName,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontSize: 13,
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
                                     color: Colors.white,
                                   ),
                                 )

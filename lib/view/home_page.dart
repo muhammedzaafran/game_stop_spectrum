@@ -30,9 +30,9 @@ class HomePage extends StatefulWidget {
 class _MainPageState extends State<HomePage> {
   final _advancedDrawerController = AdvancedDrawerController();
   final GoogleSignInController googleSignInController =
-      GoogleSignInController();
+  GoogleSignInController();
   final GetUserDataController _getUserDataController =
-      Get.put(GetUserDataController());
+  Get.put(GetUserDataController());
   User? user = FirebaseAuth.instance.currentUser;
   late List<QueryDocumentSnapshot<Object?>> userData = [];
 
@@ -107,7 +107,7 @@ class _MainPageState extends State<HomePage> {
                         } else {
                           // Data has been loaded successfully
                           List<QueryDocumentSnapshot<Object?>> data =
-                              snapshot.data!;
+                          snapshot.data!;
 
                           // Rest of your widget tree using the 'data'
 
@@ -135,7 +135,7 @@ class _MainPageState extends State<HomePage> {
                                   radius: 22.0,
                                   backgroundColor: AppConstant.appMainColor,
                                   child:
-                                      Image.network("${data[0]['userImg']}")),
+                                  Image.network("${data[0]['userImg']}")),
                             ),
                           );
                         }
@@ -212,29 +212,29 @@ class _MainPageState extends State<HomePage> {
                       },
                     ),
                   ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      ContactUsDialog.showContactUsDialog(context);
-                    },
-                    titleAlignment: ListTileTitleAlignment.center,
-                    title: const Text(
-                      "Contact",
-                      style: TextStyle(color: AppConstant.appTextColor),
-                    ),
-                    leading: const Icon(
-                      Icons.help,
-                      color: AppConstant.appTextColor,
-                    ),
-                    trailing: const Icon(
-                      Icons.arrow_forward,
-                      color: AppConstant.appTextColor,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListTile(
+                      onTap: () {
+                        ContactUsDialog.showContactUsDialog(context);
+                      },
+                      titleAlignment: ListTileTitleAlignment.center,
+                      title: const Text(
+                        "Contact",
+                        style: TextStyle(color: AppConstant.appTextColor),
+                      ),
+                      leading: const Icon(
+                        Icons.help,
+                        color: AppConstant.appTextColor,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward,
+                        color: AppConstant.appTextColor,
+                      ),
                     ),
                   ),
-                ),
 
-                Padding(
+                  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListTile(
                       onTap: () async {

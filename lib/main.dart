@@ -22,9 +22,10 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return const ScreenUtilInit(
-        designSize:  Size(360, 800),
+        designSize: Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
+
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
           home: SplashScreen()

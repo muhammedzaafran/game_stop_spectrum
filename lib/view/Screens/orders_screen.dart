@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../controller/cart-price-controller.dart';
@@ -27,8 +28,8 @@ class _OrderScreenState extends State<OrderScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppConstant.appMainColor,
-        title: const Text('All Orders',style: TextStyle(
-          fontFamily: 'BebasNeue-Regular',fontSize: 30
+        title:  Text('All Orders',style: TextStyle(
+          fontFamily: 'BebasNeue-Regular',fontSize: 30.sp
         )),
       ),
       body: StreamBuilder(
@@ -45,7 +46,7 @@ class _OrderScreenState extends State<OrderScreen> {
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
-              height: Get.height / 5,
+              height: Get.height / 5.h,
               child: const Center(
                 child: CupertinoActivityIndicator(),
               ),
@@ -86,8 +87,8 @@ class _OrderScreenState extends State<OrderScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Quantity : ${orderModel.productQuantity.toString()}",style: TextStyle(fontSize: 15,fontFamily: 'Roboto-Bold',color: Colors.black)),
-                          const SizedBox(
-                            width: 10.0,
+                           SizedBox(
+                            width: 10.0.w,
                           ),
                           Text(" Price : ₹ ${orderModel.productTotalPrice.toString()}",style: TextStyle(fontSize: 15,fontFamily: 'Roboto-Bold',color: Colors.black)),
 

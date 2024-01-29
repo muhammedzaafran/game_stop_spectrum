@@ -4,11 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_stop_spectrum/view/auth_ui/forgot_password.dart';
 import 'package:game_stop_spectrum/view/auth_ui/sentotp.dart';
 import 'package:game_stop_spectrum/view/auth_ui/sign_up_screen.dart';
-import 'package:game_stop_spectrum/view/auth_ui/verifyotp.dart';
 import 'package:game_stop_spectrum/view/home_page.dart';
 import 'package:game_stop_spectrum/view/widget/custom_textfield.dart';
 import 'package:get/get.dart';
-
 import '../../controller/email_sign_in_controller.dart';
 import '../../controller/google_sign_in_controller.dart';
 import '../../controller/password_visibility_controller.dart';
@@ -49,8 +47,8 @@ class _SignInPageState extends State<SignInPage> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
-              width: Get.width,
-              height: Get.height,
+              width: ScreenUtil().screenWidth,
+              height: ScreenUtil().screenHeight,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -83,8 +81,8 @@ class _SignInPageState extends State<SignInPage> {
                   Container(
                     alignment: Alignment.center,
                     child: SizedBox(
-                      width: 357,
-                      height: 369,
+                      width: 357.w,
+                      height: 369.h,
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -103,10 +101,10 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                   controller: _emailTextController,
                                   hintText: "Email",
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 25.0, horizontal: 16.0)),
-                              const SizedBox(
-                                height: 15,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 25.0.h, horizontal: 16.0.w)),
+                              SizedBox(
+                                height: 15.h,
                               ),
                               Obx(() => CustomTextField(
                                 keyboardType: TextInputType.text,
@@ -129,8 +127,8 @@ class _SignInPageState extends State<SignInPage> {
                                         color: Colors.black),
                                     controller: _passwordTextController,
                                     hintText: "Password",
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 25.0, horizontal: 16.0),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 25.0.h, horizontal: 16.0.w),
                                   )),
                               CustomTextBtn(
                                 title: "Forgot password?",
@@ -138,11 +136,11 @@ class _SignInPageState extends State<SignInPage> {
                                 onPressed: () {
                                   Get.to(() => const ForgotPasswordPage());
                                 },
-                                width: 10,
-                                height: 10,
+                                width: 10.w,
+                                height: 10.h,
                               ),
                               CustomElevatedBtn(
-                                height: 60,
+                                height: 40.h,
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign In",
@@ -165,7 +163,7 @@ class _SignInPageState extends State<SignInPage> {
                                   }
                                 },
                                 textColor: Colors.white,
-                                width: 357,
+                                width: 357.w,
                               ),
                               Center(
                                 child: CustomTextBtn(
@@ -174,12 +172,12 @@ class _SignInPageState extends State<SignInPage> {
                                   onPressed: () {
                                     Get.to(() => const SignUpPage());
                                   },
-                                  width: 10,
-                                  height: 10,
+                                  width: 10.w,
+                                  height: 10.h,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 15,
+                              SizedBox(
+                                height: 15.h,
                               ),
                             ]),
                       ),
@@ -200,8 +198,8 @@ class _SignInPageState extends State<SignInPage> {
                               fontFamily: 'Roboto-Bold',
                             ),
                           ),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -213,8 +211,8 @@ class _SignInPageState extends State<SignInPage> {
                                   _googleSignInController.signUpWithGoogle();
                                 },
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 10.w,
                               ),
                               SocialBtn(
                                 image: "asset/images/phoneIn.svg",

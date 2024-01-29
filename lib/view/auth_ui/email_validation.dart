@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
@@ -26,8 +27,8 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
       child: Scaffold(
         backgroundColor: AppConstant.black,
         appBar: AppBar(
-          title: const Text("VERIFY YOUR EMAIL ADDRESS",
-              style: TextStyle(fontSize: 35, fontFamily: 'BebasNeue-Regular')),
+          title:  Text("VERIFY YOUR EMAIL ADDRESS",
+              style: TextStyle(fontSize: 35.sp, fontFamily: 'BebasNeue-Regular')),
           centerTitle: true,
           backgroundColor: AppConstant.transparent,
           elevation: 0,
@@ -38,12 +39,12 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Lottie.asset('asset/json/verify.json',
-                  width: 250, height: 150, animate: true, repeat: true),
+                  width: 250.w, height: 150.h, animate: true, repeat: true),
               Container(
-                width: Get.width * 0.5,
+                width: Get.width * 0.5.w,
                 decoration: BoxDecoration(
                   border:
-                      Border.all(color: Colors.white, width: 2.0), // Add border
+                      Border.all(color: Colors.white, width: 2.0.w), // Add border
                 ),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -53,29 +54,29 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Name :  ${widget.user.displayName}",
-                          style: const TextStyle(color: Colors.white, fontSize: 20),
+                          style:  TextStyle(color: Colors.white, fontSize: 20.sp),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Email : ${widget.user.email}",
-                          style: const TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(color: Colors.white, fontSize: 20.sp),
                         ),
                       )
                     ]),
               ),
-              const SizedBox(
-                height: 18,
+              SizedBox(
+                height: 18.h,
               ),
               Column(
                 children: [
-                  const Text(
+                   Text(
                     "Email is not verified",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 20.sp),
                   ),
-                  const SizedBox(
-                    height: 20,
+                 SizedBox(
+                    height: 20.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +84,7 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                     children: [
                       SizedBox(
                         child: CustomElevatedBtn(
-                          height: 35,
+                          height: 35.h,
                           backgroundColor: AppConstant.appBtnColor,
                           foregroundColor: AppConstant.appMainColor,
                           title: "Verify",
@@ -92,10 +93,10 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                                 .sendingEmailVerification(widget.user);
                           },
                           textColor: Colors.white,
-                          width: Get.width * 0.20,
+                          width: Get.width * 0.20.w,
                         ),
                       ),
-                      const SizedBox(width: 18,),
+                      SizedBox(width: 18.w,),
                       InkWell(
                         onTap: () async {
                           try {

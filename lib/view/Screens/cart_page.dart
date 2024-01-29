@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:game_stop_spectrum/services/upi/upi_india.dart';
 import 'package:get/get.dart';
-import 'package:upi_india/upi_india.dart';
 import '../../controller/cart-price-controller.dart';
 import '../../controller/place_order_controller.dart';
 import '../../model/cart_model.dart';
@@ -38,7 +38,7 @@ class _CartPageState extends State<CartPage> {
   void showCustomBottomSheet() {
     Get.bottomSheet(
       Container(
-        height: Get.height * 0.9,
+        height: Get.height * 0.9.h,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -61,7 +61,7 @@ class _CartPageState extends State<CartPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 20.0),
                   child: Container(
-                    height: 55.0,
+                    height: 55.0.h,
                     child: CustomTextField(
                         keyboardType: TextInputType.name,
                         validateInput: (value) => Validator.validateName(
@@ -81,7 +81,7 @@ class _CartPageState extends State<CartPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 20.0),
                   child: SizedBox(
-                    height: 55.0,
+                    height: 55.0.h,
                     child: CustomTextField(
                       keyboardType: TextInputType.number,
                       validateInput: (value) =>
@@ -99,7 +99,7 @@ class _CartPageState extends State<CartPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 20.0),
                   child: Container(
-                    height: 55.0,
+                    height: 55.0.h,
                     child: CustomTextField(
                         keyboardType: TextInputType.name,
                         validateInput: (value) => Validator.validateAddress(
@@ -116,7 +116,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                 ),
                 CustomElevatedBtn(
-                  height: 40,
+                  height: 40.h,
                   backgroundColor: AppConstant.appMainColor,
                   foregroundColor: AppConstant.appBtnColor,
                   title: "Place Order",
@@ -156,7 +156,7 @@ class _CartPageState extends State<CartPage> {
                     }
                   },
                   textColor: Colors.white,
-                  width: Get.width * 0.30,
+                  width: Get.width * 0.30.w,
                 ),
               ],
             ),
@@ -177,11 +177,11 @@ class _CartPageState extends State<CartPage> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppConstant.black,
       appBar: AppBar(
-        title: const Text(
+        title:  Text(
           "CART",
           style: TextStyle(
               fontFamily: 'BebasNeue-Regular',
-              fontSize: 35,
+              fontSize: 35.sp,
               color: Colors.white),
         ),
         centerTitle: true,
@@ -219,16 +219,16 @@ class _CartPageState extends State<CartPage> {
                   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9))),
                 ),
-                child: const Row(
+                child:  Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(right: 15),
                       child: Icon(Icons.check, color: Color(0xFFFF0000)),
                     ),
-                    SizedBox(width: 8),
-                    Text("Checkout", style: TextStyle(color: Colors.white)),
+                    SizedBox(width: 8.w),
+                    const Text("Checkout", style: TextStyle(color: Colors.white)),
                   ],
                 ),
               ),
@@ -254,7 +254,7 @@ class _CartPageState extends State<CartPage> {
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return SizedBox(
-                    height: Get.height / 5,
+                    height: Get.height / 5.h,
                     child: const Center(
                       child: CupertinoActivityIndicator(),
                     ),
@@ -353,7 +353,7 @@ class _CartPageState extends State<CartPage> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: Get.width / 20.0,
+                                      width: Get.width / 20.0.w,
                                     ),
                                     GestureDetector(
                                       onTap: () async {

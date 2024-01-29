@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../controller/get_user_data_controller.dart';
 import '../../utils/app_constant.dart';
 
@@ -21,6 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
       Get.put(GetUserDataController());
   User? user = FirebaseAuth.instance.currentUser;
   late List<QueryDocumentSnapshot<Object?>> userData = [];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,8 +38,8 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Container(
                 alignment: Alignment.center,
-                height: Get.width * 0.65,
-                width: Get.width * 0.7,
+                height: Get.width * 0.65.w,
+                width: Get.width * 0.7.h,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -84,7 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             horizontal: 10.0, vertical: 20.0),
                         child: Container(
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
                               radius: 45.0, // Set your desired radius
@@ -93,8 +92,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               backgroundColor: Colors
                                   .transparent, // Set background color to transparent
                             ),
-                            const SizedBox(
-                              height: 25,
+                             SizedBox(
+                              height: 25.h,
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -115,26 +114,24 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Row(
-
-                                  children: [
-                                    const Icon(
-                                      Icons.account_circle,
-                                      color: Colors.black,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "${data.isNotEmpty ? data[0]['username'] : 'N/A'}",
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    )
-                                  ]),
+                              child: Row(children: [
+                                const Icon(
+                                  Icons.account_circle,
+                                  color: Colors.black,
+                                  size: 40,
+                                ),
+                                 SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  "${data.isNotEmpty ? data[0]['username'] : 'N/A'}",
+                                  style:  TextStyle(
+                                      color: Colors.black, fontSize: 20.sp),
+                                )
+                              ]),
                             ),
-                            const SizedBox(
-                              height: 10,
+                             SizedBox(
+                              height: 10.h,
                             ),
                             Container(
                               alignment: Alignment.center,
@@ -156,23 +153,21 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Row(
-
-                                  children: [
-                                    const Icon(
-                                      Icons.email,
-                                      color: Colors.black,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "${data.isNotEmpty ? data[0]['email'] : 'N/A'}",
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    )
-                                  ]),
+                              child: Row(children: [
+                                const Icon(
+                                  Icons.email,
+                                  color: Colors.black,
+                                  size: 40,
+                                ),
+                                 SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  "${data.isNotEmpty ? data[0]['email'] : 'N/A'}",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20.sp),
+                                )
+                              ]),
                             ),
                           ],
                         )),

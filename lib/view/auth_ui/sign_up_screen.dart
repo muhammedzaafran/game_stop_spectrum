@@ -45,8 +45,8 @@ class _SignUpPageState extends State<SignUpPage> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
-              width: Get.width,
-              height: Get.height,
+              width: Get.width.w,
+              height: Get.height.h,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -79,8 +79,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   Container(
                     alignment: Alignment.center,
                     child: SizedBox(
-                      width: 357,
-                      height: 420,
+                      width: 357.w,
+                      height: 460.h,
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -99,10 +99,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                   controller: _nameTextController,
                                   hintText: "Name",
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 25.0, horizontal: 16.0)),
-                              const SizedBox(
-                                height: 15,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 25.0.h, horizontal: 16.0.w)),
+                              SizedBox(
+                                height: 15.h,
                               ),
                               CustomTextField(
                                 keyboardType: TextInputType.emailAddress,
@@ -116,11 +116,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                                 controller: _emailTextController,
                                 hintText: "Email",
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 25.0, horizontal: 16.0),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 25.0.h, horizontal: 16.0.w),
                               ),
-                              const SizedBox(
-                                height: 15,
+                               SizedBox(
+                                height: 15.h,
                               ),
                               Obx(() => CustomTextField(
                                     keyboardType: TextInputType.text,
@@ -144,14 +144,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                         color: Colors.black),
                                     controller: _passwordTextController,
                                     hintText: "Password",
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 25.0, horizontal: 16.0),
+                                    contentPadding:  EdgeInsets.symmetric(
+                                        vertical: 25.0.h, horizontal: 16.0.w),
                                   )),
-                              const SizedBox(
-                                height: 15,
+                              SizedBox(
+                                height: 15.h,
                               ),
                               CustomElevatedBtn(
-                                height: 60,
+                                height: 60.h,
                                 backgroundColor: AppConstant.appBtnColor,
                                 foregroundColor: AppConstant.appMainColor,
                                 title: "Sign Up",
@@ -166,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   }
                                 },
                                 textColor: Colors.white,
-                                width: 357,
+                                width: 357.w,
                               ),
                               Center(
                                 child: CustomTextBtn(
@@ -177,12 +177,12 @@ class _SignUpPageState extends State<SignUpPage> {
                                         transition:
                                             Transition.leftToRightWithFade);
                                   },
-                                  width: 10,
-                                  height: 10,
+                                  width: 10.w,
+                                  height: 10.h,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 15,
+                          SizedBox(
+                                height: 15.h,
                               ),
                             ]),
                       ),
@@ -203,8 +203,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               fontFamily: 'Roboto-Bold',
                             ),
                           ),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -216,8 +216,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                   _googleSignInController.signUpWithGoogle();
                                 },
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 10.w,
                               ),
                               SocialBtn(
                                 image: "asset/images/phoneIn.svg",

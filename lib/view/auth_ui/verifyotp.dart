@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -37,21 +38,21 @@ class _VerifyOtpState extends State<VerifyOtp> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
-              width: Get.width,
-              height: Get.height,
+              width: Get.width.w,
+              height: Get.height.h,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Lottie.asset('asset/json/otp.json',
-                      width: 300,
-                      height: 300,
+                      width: 300.w,
+                      height: 300.h,
                       animate: true,
                       fit: BoxFit.cover,
                       repeat: true),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 30.h,
                   ),
                   Form(
                       key: _formKey,
@@ -64,7 +65,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                                 OtpFieldStyle(backgroundColor: Colors.white),
                             controller: otpFieldController,
                             length: 6,
-                            width: Get.width * 09,
+                            width: Get.width * 09.w,
                             fieldWidth: 50,
                             style: const TextStyle(fontSize: 17),
                             textFieldAlignment: MainAxisAlignment.spaceAround,
@@ -75,12 +76,12 @@ class _VerifyOtpState extends State<VerifyOtp> {
                               enteredOtp=pin;
                             },
                           ),
-                          const SizedBox(
-                            height: 15,
+                          SizedBox(
+                            height: 15.h,
                           ),
                           SizedBox(
                             child: CustomElevatedBtn(
-                              height: 40,
+                              height: 40.h,
                               backgroundColor: AppConstant.appBtnColor,
                               foregroundColor: AppConstant.appMainColor,
                               title: "VERIFY OTP",
@@ -93,7 +94,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                                     widget.verificationId);
                               },
                               textColor: Colors.white,
-                              width: Get.width * 0.30,
+                              width: Get.width * 0.30.w,
                             ),
                           ),
                         ],

@@ -37,36 +37,36 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         backgroundColor: AppConstant.black,
         bottomNavigationBar: Container(
           // Wrap the bottomNavigationBar in a Container
-          padding: const EdgeInsets.all(8.0),
+          padding:  const EdgeInsets.all(12.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                width: 170,
+                width: Get.width*0.42.w,
                 child: ElevatedButton(
                   onPressed: () {
                     _getWhatsappMsg.sendMessageOnWhatsApp(productModel: widget.productModel);
                   },
                   style: ButtonStyle(
-                    backgroundColor: const MaterialStatePropertyAll(Colors.white),
+                    backgroundColor:  MaterialStatePropertyAll(Colors.white),
                     overlayColor: MaterialStateProperty.all(Colors.teal),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9))),
+                        borderRadius: BorderRadius.circular(9.r))),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.share, color: Color(0xFFFF0000)),
-                      SizedBox(width: 8),
+                      const Icon(Icons.share, color: Color(0xFFFF0000)),
+                      SizedBox(width: 8.w),
                       Text("Share on WhatsApp",
-                          style: TextStyle(color: Colors.black,fontFamily: 'Roboto-Bold')),
+                          style: TextStyle(color: Colors.black,fontFamily: 'Roboto-Bold',fontSize: 10.sp)),
                     ],
                   ),
                 ),
               ),
               SizedBox(
-                width: 170,
+                width: Get.width*0.42.w,
                 child: ElevatedButton(
                   onPressed: () async {
                     await _CartController.checkProductExistence(
@@ -75,18 +75,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   style: ButtonStyle(
                       overlayColor: MaterialStateProperty.all(Colors.teal),
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(9))),
+                          borderRadius: BorderRadius.circular(9.r))),
                       backgroundColor: const MaterialStatePropertyAll(Colors.white)),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.shopping_cart, color: Color(0xFFFF0000)),
-                      SizedBox(width: 8),
+                      const Icon(Icons.shopping_cart, color: Color(0xFFFF0000)),
+                      SizedBox(width: 8.w),
                       Text("Add to Cart",
                           style: TextStyle(
                             fontFamily: 'Roboto-Bold',
                             color: Colors.black,
+                            fontSize: 10.sp
                           )),
                     ],
                   ),
@@ -97,9 +98,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(
+          title: Text(
             "PRODUCTS ",
-            style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 30),
+            style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 30.sp),
           ),
           backgroundColor: AppConstant.transparent,
           elevation: 0,
@@ -107,8 +108,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         body: SingleChildScrollView(
           child: Container(
             alignment: Alignment.center,
-            width: Get.width,
-            height: Get.height,
+            width: Get.width.w,
+            height: Get.height.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +120,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     final imageUrl = widget.productModel.productImage[index];
                     return Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(10.0.r),
                         gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -127,11 +128,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(10.0.r),
                         child: CachedNetworkImage(
                           imageUrl: imageUrl,
                           fit: BoxFit.cover,
-                          width: Get.width - 10,
+                          width: Get.width - 10.w,
                           placeholder: (context, url) => const ColoredBox(
                             color: Colors.white,
                             child: Center(
@@ -146,7 +147,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   },
                   options: CarouselOptions(
                     scrollDirection: Axis.horizontal,
-                    height: 450,
+                    height: 450.h,
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 2),
                     autoPlayAnimationDuration:
@@ -161,8 +162,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  height: 13,
+                SizedBox(
+                  height: 13.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -170,10 +171,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     widget.productModel.productImage.length,
                     (index) => Container(
                       width: currentindex == index ? 17 : 7,
-                      height: 7.0,
+                      height: 7.0.h,
                       margin: const EdgeInsets.symmetric(horizontal: 3.0),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                         color:
                             currentindex == index ? Colors.teal : Colors.white,
                       ),
@@ -183,7 +184,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
-                    height: Get.height * 0.4,
+                    height: Get.height * 0.4.h,
                     child: Card(
                       elevation: 5.0,
                       shape: RoundedRectangleBorder(
@@ -191,7 +192,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(10.0.r),
                           gradient: const LinearGradient(
                             begin: Alignment.topRight,
                             end: Alignment.bottomRight,
@@ -228,9 +229,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   children: [
                                     BlinkText(
                                         "Price : ₹ ${widget.productModel.price}",
-                                        style: const TextStyle(
+                                        style:  TextStyle(
                                             fontFamily: 'Anton-Regular',
-                                            fontSize: 35.0,
+                                            fontSize: 35.0.sp,
                                             color: Colors.white),
                                         beginColor: Colors.black,
                                         endColor: Colors.greenAccent,
@@ -241,7 +242,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.0),
                               child: Container(
                                 alignment: Alignment.topLeft,
                                 child: Text(

@@ -45,7 +45,7 @@ class _BannerWidgetState extends State<BannerWidget> {
                 )
                 .toList(),
             options: CarouselOptions(
-              height: 190,
+              height: 190.h,
               enableInfiniteScroll: true,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 2),
@@ -61,8 +61,8 @@ class _BannerWidgetState extends State<BannerWidget> {
             ),
           );
         }),
-        const SizedBox(
-          height: 13,
+         SizedBox(
+          height: 13.h,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +74,7 @@ class _BannerWidgetState extends State<BannerWidget> {
                   onTap: () => carouselController.animateToPage(entry.key),
                   child: Container(
                     width: currentindex == entry.key ? 17 : 7,
-                    height: 7.0,
+                    height: 7.0.h,
                     margin: const EdgeInsets.symmetric(
                       horizontal: 3.0,
                     ),

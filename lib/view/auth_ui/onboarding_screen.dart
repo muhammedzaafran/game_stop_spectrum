@@ -28,8 +28,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         ),
         body: Container(
             alignment: Alignment.center,
-            width: Get.width,
-            height: Get.height,
+            width: ScreenUtil().screenWidth,
+            height: ScreenUtil().screenHeight,
             decoration: const BoxDecoration(color: AppConstant.black),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -41,7 +41,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  margin: const EdgeInsets.only(top: 10.0),
+                  margin: EdgeInsets.only(top: 10.0.w),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,13 +78,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height: 200,
+                  height: 200.h,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CustomElevatedBtn(
-                          width: 160,
-                          height: 60,
+                          width: 140.w,
+                          height: 40.h,
                           backgroundColor: AppConstant.appBtnColor,
                           title: "Login",
                           onPressed: () {
@@ -94,8 +94,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           textColor: Colors.white,
                         ),
                         CustomElevatedBtn(
-                          width: 160,
-                          height: 60,
+                          width: 140.w,
+                          height: 40.h,
                           backgroundColor: AppConstant.appBtnColor,
                           foregroundColor: AppConstant.appMainColor,
                           title: "Register",

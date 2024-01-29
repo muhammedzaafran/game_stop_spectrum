@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import '../../controller/verify_phone_controller.dart';
@@ -34,19 +35,21 @@ class _SendOtpPnoState extends State<SendOtpPno> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
+              width: Get.width.w,
+              height: Get.height.h,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Lottie.asset('asset/json/playstation.json',
-                      width: 150,
-                      height: 150,
+                      width: 150.w,
+                      height: 150.h,
                       animate: true,
                       fit: BoxFit.cover,
                       repeat: true),
-                  const SizedBox(
-                    height: 110,
+                  SizedBox(
+                    height: 110.h,
                   ),
                   Form(
                       key: _formKey,
@@ -55,8 +58,8 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(
-                            width: Get.width * 0.85,
-                            height: 80,
+                            width: Get.width * 0.85.w,
+                            height: 80.h,
                             child: CustomTextField(
                               keyboardType: TextInputType.number,
                               validateInput: (value) =>
@@ -72,7 +75,7 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                           ),
                           SizedBox(
                             child: CustomElevatedBtn(
-                              height: 40,
+                              height: 40.h,
                               backgroundColor: AppConstant.appBtnColor,
                               foregroundColor: AppConstant.appMainColor,
                               title: "GET OTP",
@@ -84,7 +87,7 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                                 }
                               },
                               textColor: Colors.white,
-                              width: Get.width * 0.30,
+                              width: Get.width * 0.30.w,
                             ),
                           ),
                         ],

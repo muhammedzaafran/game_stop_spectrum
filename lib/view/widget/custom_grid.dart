@@ -18,7 +18,7 @@ class GetProductWidget extends StatefulWidget {
 
 class _GetProductWidgetState extends State<GetProductWidget> {
   final GetProductDataController _getProductDataController =
-      Get.put(GetProductDataController());
+  Get.put(GetProductDataController());
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

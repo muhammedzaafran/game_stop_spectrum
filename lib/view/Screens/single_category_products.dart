@@ -30,12 +30,12 @@ class _SingleCategoryProductsState extends State<SingleCategoryProducts> {
       backgroundColor: AppConstant.black,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title:  Text(
           "Category Products",
           style: TextStyle(
               color: Colors.white,
               fontFamily: 'BebasNeue-Regular',
-              fontSize: 30),
+              fontSize: 30.sp),
         ),
         backgroundColor: AppConstant.transparent,
         elevation: 0,
