@@ -27,11 +27,17 @@ class _ProfilePageState extends State<ProfilePage> {
         extendBodyBehindAppBar: true,
         backgroundColor: AppConstant.black,
         appBar: AppBar(
+          title: Text("PROFILE PAGE",
+              style:
+                  TextStyle(fontSize: 26.sp, fontFamily: 'BebasNeue-Regular')),
+          centerTitle: true,
           backgroundColor: AppConstant.transparent,
           elevation: 0,
         ),
         body: Container(
           alignment: Alignment.center,
+          width: ScreenUtil().screenWidth,
+          height: ScreenUtil().screenHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,11 +55,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                      blurRadius: 4,
+                      blurRadius: 4.r,
                       color: Colors.transparent,
-                      offset: Offset(0, 2),
+                      offset: const Offset(0, 2),
                     )
                   ],
                   borderRadius: BorderRadius.circular(8),
@@ -79,11 +85,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       // Rest of your widget tree using the 'data'
 
                       return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 20.0),
-                        child: Container(
-                            child: Column(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0.w, vertical: 20.0.h),
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             CircleAvatar(
                               radius: 45.0, // Set your desired radius
@@ -92,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               backgroundColor: Colors
                                   .transparent, // Set background color to transparent
                             ),
-                             SizedBox(
+                            SizedBox(
                               height: 25.h,
                             ),
                             Container(
@@ -105,11 +111,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                 ),
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 4,
-                                    color: Color(0x3600000F),
-                                    offset: Offset(0, 2),
+                                    blurRadius: 4.r,
+                                    color: const Color(0x3600000F),
+                                    offset: const Offset(0, 2),
                                   )
                                 ],
                                 borderRadius: BorderRadius.circular(8),
@@ -118,19 +124,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                 const Icon(
                                   Icons.account_circle,
                                   color: Colors.black,
-                                  size: 40,
+                                  size: 30,
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   width: 10.w,
                                 ),
                                 Text(
                                   "${data.isNotEmpty ? data[0]['username'] : 'N/A'}",
-                                  style:  TextStyle(
-                                      color: Colors.black, fontSize: 20.sp),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 14.sp),
                                 )
                               ]),
                             ),
-                             SizedBox(
+                            SizedBox(
                               height: 10.h,
                             ),
                             Container(
@@ -144,33 +150,33 @@ class _ProfilePageState extends State<ProfilePage> {
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                 ),
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 4,
-                                    color: Color(0x3600000F),
-                                    offset: Offset(0, 2),
+                                    blurRadius: 4.r,
+                                    color: const Color(0x3600000F),
+                                    offset: const Offset(0, 2),
                                   )
                                 ],
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.r),
                               ),
                               child: Row(children: [
                                 const Icon(
                                   Icons.email,
                                   color: Colors.black,
-                                  size: 40,
+                                  size: 30,
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   width: 10.w,
                                 ),
                                 Text(
                                   "${data.isNotEmpty ? data[0]['email'] : 'N/A'}",
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 20.sp),
+                                      color: Colors.black, fontSize: 14.sp),
                                 )
                               ]),
                             ),
                           ],
-                        )),
+                        ),
                       );
                     }
                   },

@@ -52,8 +52,8 @@ class _MainPageState extends State<HomePage> {
       builder: (BuildContext context) {
         return AdvancedDrawer(
           backdrop: Container(
-            width: double.infinity,
-            height: double.infinity,
+            width: ScreenUtil().screenWidth,
+            height: ScreenUtil().screenHeight,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -304,17 +304,17 @@ class _MainPageState extends State<HomePage> {
                 ),
               ),
               centerTitle: true,
-              title: const Text(
+              title:  Text(
                 "GET YOUR GAMES HERE ",
-                style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 35),
+                style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 25.sp),
               ),
               backgroundColor: AppConstant.transparent,
               elevation: 0,
             ),
             body: SingleChildScrollView(
               child: Container(
-                width: Get.width,
-                height: Get.height,
+                width: ScreenUtil().screenWidth,
+                height: ScreenUtil().screenHeight,
                 alignment: Alignment.center,
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
