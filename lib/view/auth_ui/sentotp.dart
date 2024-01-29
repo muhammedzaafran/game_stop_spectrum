@@ -26,41 +26,41 @@ class _SendOtpPnoState extends State<SendOtpPno> {
       child: Scaffold(
         backgroundColor: AppConstant.black,
         appBar: AppBar(
-          title: const Text("SEND OTP",
-              style: TextStyle(fontSize: 35, fontFamily: 'BebasNeue-Regular')),
+          title: Text("SEND OTP",
+              style:
+                  TextStyle(fontSize: 35.sp, fontFamily: 'BebasNeue-Regular')),
           centerTitle: true,
           backgroundColor: AppConstant.transparent,
           elevation: 0,
         ),
-        body: SingleChildScrollView(
-          child: Container(
-              alignment: Alignment.center,
-              width: Get.width.w,
-              height: Get.height.h,
-              decoration: const BoxDecoration(color: AppConstant.black),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Lottie.asset('asset/json/playstation.json',
-                      width: 150.w,
-                      height: 150.h,
-                      animate: true,
-                      fit: BoxFit.cover,
-                      repeat: true),
-                  SizedBox(
-                    height: 110.h,
-                  ),
-                  Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: Get.width * 0.85.w,
-                            height: 80.h,
-                            child: CustomTextField(
+        body: Container(
+            alignment: Alignment.center,
+            width: ScreenUtil().screenWidth,
+            height: ScreenUtil().screenHeight,
+            decoration: const BoxDecoration(color: AppConstant.black),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 150.h,
+                ),
+                Lottie.asset('asset/json/playstation.json',
+                    width: 100.w,
+                    height: 100.h,
+                    animate: true,
+                    fit: BoxFit.cover,
+                    repeat: true),
+                Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: Get.width * 0.85.w,
+                          height: 60.h,
+                          child: CustomTextField(
                               keyboardType: TextInputType.number,
                               validateInput: (value) =>
                                   Validator.validatePhoneNumber(
@@ -71,30 +71,30 @@ class _SendOtpPnoState extends State<SendOtpPno> {
                                 color: Colors.black,
                               ),
                               hintText: "      enter number",
-                            ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15.0.h, horizontal: 12.0.w)),
+                        ),
+                        SizedBox(
+                          child: CustomElevatedBtn(
+                            height: 30.h,
+                            backgroundColor: AppConstant.appBtnColor,
+                            foregroundColor: AppConstant.appMainColor,
+                            title: "GET OTP",
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                String phoneNumber =
+                                    "+91" + _sendTextController.text.trim();
+                                sentOtpController.sendOtp(phoneNumber);
+                              }
+                            },
+                            textColor: Colors.white,
+                            width: Get.width * 0.30.w,
                           ),
-                          SizedBox(
-                            child: CustomElevatedBtn(
-                              height: 40.h,
-                              backgroundColor: AppConstant.appBtnColor,
-                              foregroundColor: AppConstant.appMainColor,
-                              title: "GET OTP",
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  String phoneNumber =
-                                      "+91" + _sendTextController.text.trim();
-                                  sentOtpController.sendOtp(phoneNumber);
-                                }
-                              },
-                              textColor: Colors.white,
-                              width: Get.width * 0.30.w,
-                            ),
-                          ),
-                        ],
-                      ))
-                ],
-              )),
-        ),
+                        ),
+                      ],
+                    ))
+              ],
+            )),
       ),
     );
   }
