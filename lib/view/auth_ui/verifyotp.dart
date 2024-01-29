@@ -38,16 +38,19 @@ class _VerifyOtpState extends State<VerifyOtp> {
         body: SingleChildScrollView(
           child: Container(
               alignment: Alignment.center,
-              width: Get.width.w,
-              height: Get.height.h,
+              width: ScreenUtil().screenWidth,
+              height: ScreenUtil().screenHeight,
               decoration: const BoxDecoration(color: AppConstant.black),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: 100.h,
+                  ),
                   Lottie.asset('asset/json/otp.json',
-                      width: 300.w,
-                      height: 300.h,
+                      width: 150.w,
+                      height: 150.h,
                       animate: true,
                       fit: BoxFit.cover,
                       repeat: true),
@@ -73,7 +76,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                             spaceBetween: 5,
                             onCompleted: (pin) {
                               print("Completed: " + pin);
-                              enteredOtp=pin;
+                              enteredOtp = pin;
                             },
                           ),
                           SizedBox(
@@ -81,17 +84,16 @@ class _VerifyOtpState extends State<VerifyOtp> {
                           ),
                           SizedBox(
                             child: CustomElevatedBtn(
-                              height: 40.h,
+                              height: 30.h,
                               backgroundColor: AppConstant.appBtnColor,
                               foregroundColor: AppConstant.appMainColor,
                               title: "VERIFY OTP",
                               onPressed: () {
-                                validateInput: (value) =>
-                                    Validator.validatePhoneNumber(
-                                        phoneNumber: value);
+                                validateInput:
+                                (value) => Validator.validatePhoneNumber(
+                                    phoneNumber: value);
                                 sentOtpController.verifyOtp(
-                                    enteredOtp,
-                                    widget.verificationId);
+                                    enteredOtp, widget.verificationId);
                               },
                               textColor: Colors.white,
                               width: Get.width * 0.30.w,
